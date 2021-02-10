@@ -1,0 +1,143 @@
+.select-size input {
+  display: none;
+}
+
+.numeroLabel {
+  border: 1px solid white;
+  color: black;
+}
+label {
+  display: inline-block;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  border: 1px solid #ec7063;
+  line-height: 20px;
+  cursor: pointer;
+  margin: 1px;
+  margin-top: 6px;
+  margin-bottom: 6px;
+  color: #ec7063;
+}
+.LetrasVerdes {
+  border: 1px solid #8ea462;
+  color: #8ea462;
+}
+.label-big {
+  margin-right: 25px;
+  margin-left: 25px;
+}
+
+#null1:checked ~ label[for="null1"],
+#a1:checked ~ label[for="a1"],
+#b1:checked ~ label[for="b1"],
+#c1:checked ~ label[for="c1"],
+#d1:checked ~ label[for="d1"],
+#e1:checked ~ label[for="e1"],
+#f1:checked ~ label[for="f1"],
+#g1:checked ~ label[for="g1"],
+#h1:checked ~ label[for="h1"],
+#i1:checked ~ label[for="i1"],
+#j1:checked ~ label[for="j1"] {
+  background: black;
+  color: #fff;
+}
+#null2:checked ~ label[for="null2"],
+#a2:checked ~ label[for="a2"],
+#b2:checked ~ label[for="b2"],
+#c2:checked ~ label[for="c2"],
+#d2:checked ~ label[for="d2"],
+#e2:checked ~ label[for="e2"],
+#f2:checked ~ label[for="f2"],
+#g2:checked ~ label[for="g2"],
+#h2:checked ~ label[for="h2"],
+#i2:checked ~ label[for="i2"],
+#j2:checked ~ label[for="j2"] {
+  background: black;
+  color: #fff;
+}
+#null3:checked ~ label[for="null3"],
+#a3:checked ~ label[for="a3"],
+#b3:checked ~ label[for="b3"],
+#c3:checked ~ label[for="c3"],
+#d3:checked ~ label[for="d3"],
+#e3:checked ~ label[for="e3"],
+#f3:checked ~ label[for="f3"],
+#g3:checked ~ label[for="g3"],
+#h3:checked ~ label[for="h3"],
+#i3:checked ~ label[for="i3"],
+#j3:checked ~ label[for="j3"] {
+  background: black;
+  color: #fff;
+}
+#null4:checked ~ label[for="null4"],
+#a4:checked ~ label[for="a4"],
+#b4:checked ~ label[for="b4"],
+#c4:checked ~ label[for="c4"],
+#d4:checked ~ label[for="d4"],
+#e4:checked ~ label[for="e4"],
+#f4:checked ~ label[for="f4"],
+#g4:checked ~ label[for="g4"],
+#h4:checked ~ label[for="h4"],
+#i4:checked ~ label[for="i4"],
+#j4:checked ~ label[for="j4"] {
+  background: black;
+  color: #fff;
+}
+#null5:checked ~ label[for="null5"],
+#a5:checked ~ label[for="a5"],
+#b5:checked ~ label[for="b5"],
+#c5:checked ~ label[for="c5"],
+#d5:checked ~ label[for="d5"],
+#e5:checked ~ label[for="e5"],
+#f5:checked ~ label[for="f5"],
+#g5:checked ~ label[for="g5"],
+#h5:checked ~ label[for="h5"],
+#i5:checked ~ label[for="i5"],
+#j5:checked ~ label[for="j5"] {
+  background: black;
+  color: #fff;
+}
+#null6:checked ~ label[for="null6"],
+#a6:checked ~ label[for="a6"],
+#b6:checked ~ label[for="b6"],
+#c6:checked ~ label[for="c6"],
+#d6:checked ~ label[for="d6"],
+#e6:checked ~ label[for="e6"],
+#f6:checked ~ label[for="f6"],
+#g6:checked ~ label[for="g6"],
+#h6:checked ~ label[for="h6"],
+#i6:checked ~ label[for="i6"],
+#j6:checked ~ label[for="j6"] {
+  background: black;
+  color: #fff;
+}
+#null7:checked ~ label[for="null7"],
+#a7:checked ~ label[for="a7"],
+#b7:checked ~ label[for="b7"],
+#c7:checked ~ label[for="c7"],
+#d7:checked ~ label[for="d7"],
+#e7:checked ~ label[for="e7"],
+#f7:checked ~ label[for="f7"],
+#g7:checked ~ label[for="g7"],
+#h7:checked ~ label[for="h7"],
+#i7:checked ~ label[for="i7"],
+#j7:checked ~ label[for="j7"] {
+  background: black;
+  color: #fff;
+}
+#null8:checked ~ label[for="null8"],
+#a8:checked ~ label[for="a8"],
+#b8:checked ~ label[for="b8"],
+#c8:checked ~ label[for="c8"],
+#d8:checked ~ label[for="d8"],
+#e8:checked ~ label[for="e8"],
+#f8:checked ~ label[for="f8"],
+#g8:checked ~ label[for="g8"],
+#h8:checked ~ label[for="h8"],
+#i8:checked ~ label[for="i8"],
+#j8:checked ~ label[for="j8"] {
+  background: black;
+  color: #fff;
+}
