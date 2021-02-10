@@ -547,19 +547,12 @@
                                     </thead>
                                      <?php
                                         $conexion = mysqli_connect('localhost', 'root', '123456', 'bd_final');
-                                        $sql="SELECT 
-           usuarios.idUsuario,
-           usuarios.nombre,
-           usuarios.correo,
-           usuarios.usuario,
-           usuarios.password,
-           usuarios.telefono,
-           usuarios.estatus,
-          equipo.nombre as nombreEquipo,
-          perfil.nombre as nombrePerfil
-        FROM usuarios
-        INNER JOIN equipo ON usuarios.idUsuario = equipo.idEquipo
-        INNER JOIN perfil ON usuarios.idUsuario = perfil.idPerfil";
+                                        $sql="SELECT idUsuario, usuarios.nombre, correo, usuario, password, telefono, estatus,
+                                            equipo.nombre as nombreEquipo,
+                                            perfil.nombre as nombrePerfil
+                                       FROM usuarios
+                                       INNER JOIN equipo ON usuarios.idEquipo = equipo.idEquipo
+                                       INNER JOIN perfil ON usuarios.idPerfil = perfil.idPerfil";
                                         $result=mysqli_query($conexion, $sql);
 
                                         while($mostrar=mysqli_fetch_array($result))
