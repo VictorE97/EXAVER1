@@ -11,6 +11,22 @@
     $tipo_perfil = $_SESSION['idPerfil'];
 
 ?>
+
+<?php
+ $consulta=ConsultarUsuario($_GET['idUsuario']);
+
+  function ConsultarUsuario($id)
+  {
+    $conexion = mysqli_connect('localhost', 'root', '123456', 'bd_final');
+    $sentencia="SELECT * FROM usuarios WHERE idUsuario='".$id."' ";
+    $resultado=mysqli_query($conexion,$sentencia) or die (mysqli_error());
+    $filas=mysqli_fetch_assoc($resultado);
+    return [
+      $filas['nombre'],
+    ];
+
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -524,6 +540,83 @@
     </div>
   </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="actualizar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update User</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="Agregar/Agregar Usuario.php">
+        <input type="hidden" name="idUsuario" value="<?php echo $_GET['idUsuario'] ?>">
+            <div class="row">
+                <div class="col">
+                    <input type="text" name="nombre" class="form-control" placeholder="Name" value="<?php echo $consulta["0"]; ?>" required>
+                </div>
+                <div class="col">
+                    <input type="text" name="correo" class="form-control" placeholder="E-mail" required>
+                </div>
+            </div> <br>
+            <div class="row">
+                <div class="col">
+                    <input type="text" name="usuario" class="form-control" placeholder="User" required>
+                </div>
+                <div class="col">
+                    <input type="text" name="password" class="form-control" placeholder="Password" required>
+                </div>
+            </div> <br>
+            <div class="row">
+                <div class="col">
+                    <input type="text" name="telefono" class="form-control" placeholder="Phone" required>
+                </div>
+                <div class="col">
+                    <label for="exampleFormControlSelect1">Status</label>
+                        <select class="form-control" id="exampleFormControlSelect1" name="estatus">
+                          <option>Activo</option>
+                          <option>Inactivo</option>
+                        </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="exampleFormControlSelect1">Team</label>
+                        <select class="form-control" id="exampleFormControlSelect1" name="idEquipo">
+                            <option value="0">--Selecciona una opción---</option>  
+                            <option value="1">Exaver 1</option>
+                            <option value="2">Exaver 2</option>
+                            <option value="3">Exaver 3</option>
+                            <option value="4">Edicion</option>
+                            <option value="5">Coordinacion</option>
+                        </select>
+                </div>
+                <div class="col">
+                    <label for="exampleFormControlSelect1">Profile</label>
+                        <select class="form-control" id="exampleFormControlSelect1" name="idPerfil">
+                          <option value="0">--Selecciona una opción---</option>  
+                            <option value="1">TL</option>
+                            <option value="2">IW</option>
+                            <option value="3">P</option>
+                            <option value="4">ED</option>
+                            <option value="5">CO</option>
+                            <option value="6">D</option>
+                        </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <input type="Submit" class="btn btn-primary" name="" value="Register User">
+        <!--button type="button" class="btn btn-primary">Save changes</button-->
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
@@ -570,7 +663,7 @@
                                             echo "<td>"; echo $mostrar["nombrePerfil"]; echo "</td>";
                                             echo "<td>
                                             
-                                        <a href='#.php?idUsuario=".$mostrar['idUsuario']."'><button class='btn btn-primary' type='button' data-toggle='modal' data-target='#exampleModal'><i class='fas fa-edit'></i></button></a>
+                                        <a href='#.php?idUsuario=".$mostrar['idUsuario']."'><button class='btn btn-primary' type='button' data-toggle='modal' data-target='#actualizar'><i class='fas fa-edit'></i></button></a>
                                             
                                         <a href='#.php?idUsuario=".$mostrar['idUsuario']."'> <button type='button' class='btn btn-danger'><i class='far fa-trash-alt'></i></button></a>
                                                  </td>";
