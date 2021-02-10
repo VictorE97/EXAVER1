@@ -542,7 +542,7 @@
                                             <th>Telefono</th>
                                             <th>Estatus</th>                                                       <th>Equipo</th>
                                             <th>Perfil</th>
-                                            <th></th>
+                                            <th>Funciones</th>
                                         </tr>
                                     </thead>
                                      <?php
