@@ -89,7 +89,7 @@
                 <main>
                     <div class="container-fluid">
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                        New User
+                        New Version
                     </button>
 
 <!-- Modal -->
@@ -97,41 +97,21 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Register User</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Register Version</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form method="POST" action="Agregar/Agregar Usuario.php">
+        <form method="POST" action="Agregar/Agregar Version.php">
             <div class="row">
                 <div class="col">
-                    <input type="text" name="nombre" class="form-control" placeholder="Name" required>
+                    <input type="text" name="nombre" class="form-control" placeholder="Start Date " required>
                 </div>
                 <div class="col">
-                    <input type="text" name="correo" class="form-control" placeholder="E-mail" required>
+                    <input type="text" name="correo" class="form-control" placeholder="Finish Date" required>
                 </div>
             </div> <br>
-            <div class="row">
-                <div class="col">
-                    <input type="text" name="usuario" class="form-control" placeholder="User" required>
-                </div>
-                <div class="col">
-                    <input type="text" name="password" class="form-control" placeholder="Password" required>
-                </div>
-            </div> <br>
-            <div class="row">
-                <div class="col">
-                    <input type="text" name="telefono" class="form-control" placeholder="Phone" required>
-                </div>
-                <div class="col">
-                    <label for="exampleFormControlSelect1">Status</label>
-                        <select class="form-control" id="exampleFormControlSelect1" name="estatus">
-                          <option>Activo</option>
-                          <option>Inactivo</option>
-                        </select>
-                </div>
-            </div>
             <div class="row">
                 <div class="col">
                     <label for="exampleFormControlSelect1">Team</label>
@@ -257,43 +237,26 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Nombre</th>
-                                            <th>Correo</th>
-                                            <th>Usuario</th>
-                                            <th>Password</th>
-                                            <th>Telefono</th>
-                                            <th>Estatus</th>                                                       <th>Equipo</th>
-                                            <th>Perfil</th>
+                                            <th>Fecha Inicio</th>
+                                            <th>Fecha Termino</th>
                                             <th>Funciones</th>
                                         </tr>
                                     </thead>
                                      <?php
                                         $conexion = mysqli_connect('localhost', 'root', '123456', 'bd_final');
-                                        $sql="SELECT idUsuario, usuarios.nombre, correo, usuario, password, telefono, estatus,
-                                            equipo.nombre as nombreEquipo,
-                                            perfil.nombre as nombrePerfil
-                                       FROM usuarios
-                                       INNER JOIN equipo ON usuarios.idEquipo = equipo.idEquipo
-                                       INNER JOIN perfil ON usuarios.idPerfil = perfil.idPerfil";
+                                        $sql="SELECT * FROM version";
                                         $result=mysqli_query($conexion, $sql);
 
                                         while($mostrar=mysqli_fetch_array($result))
                                         {
                                         
                                         echo "<tr>";
-                                            echo "<td>"; echo $mostrar["idUsuario"]; echo "</td>";
+                                            echo "<td>"; echo $mostrar["idVersion"]; echo "</td>";
                                             echo "<td>"; echo $mostrar["nombre"]; echo "</td>";
-                                            echo "<td>"; echo $mostrar["correo"]; echo "</td>";
-                                            echo "<td>"; echo $mostrar["usuario"]; echo "</td>";
-                                            echo "<td>"; echo $mostrar["password"]; echo "</td>";
-                                            echo "<td>"; echo $mostrar["telefono"]; echo "</td>";
-                                            echo "<td>"; echo $mostrar["estatus"]; echo "</td>";
-                                            echo "<td>"; echo $mostrar["nombreEquipo"]; echo "</td>";
-                                            echo "<td>"; echo $mostrar["nombrePerfil"]; echo "</td>";
+                                            echo "<td>"; echo $mostrar["fechaInicio"]; echo "</td>";
+                                            echo "<td>"; echo $mostrar["fechaTermino"]; echo "</td>";
                                             echo "<td>
-                                            <a data-toggle='modal' data-id='".$mostrar["idUsuario"]."' title='Add this item' class='open-AddBookDialog btn btn-primary' href='#addBookDialog'>test</a>
-                                        <a href='#.php?idUsuario=".$mostrar['idUsuario']."'--><button class='btn btn-primary' type='button' data-toggle='modal' data-target='#actualizar'><i class='fas fa-edit'></i></button></a>
-                                            
-                                        <a href='#.php?idUsuario=".$mostrar['idUsuario']."'> <button type='button' class='btn btn-danger'><i class='far fa-trash-alt'></i></button></a>
+                                           
                                                  </td>";
 
                                         echo "</tr>";
@@ -308,114 +271,9 @@
                     </div>
                 </div>
                 <div class="container-fluid">
-
-                    <!-- Page Heading -->
-                    <!--h1 class="h3 mb-2 text-gray-800">Tables</h1-->
-                    <!--p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-                        For more information about DataTables, please visit the <a target="_blank"
-                            href="https://datatables.net">official DataTables documentation</a>.</p-->
-
-                            <div style="padding: 10px">
-                                <a href="#"> <button type="button" class="btn btn-primary">New Part</button></a>
-                            </div>
-                    <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Parts of Paper 1</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Nombre</th>
-                                            <th>Funcion</th>
-                                        </tr>
-                                    </thead>
-                                     <?php
-                                        $conexion = mysqli_connect('localhost', 'root', '123456', 'exaver1');
-                                        $sql="SELECT *  FROM paper1;";
-                                        $result=mysqli_query($conexion, $sql);
-
-                                        while($mostrar=mysqli_fetch_array($result))
-                                        {
-                                        
-                                        echo "<tr>";
-                                            echo "<td>"; echo $mostrar["idPaper"]; echo "</td>";
-                                            echo "<td>"; echo $mostrar["nombre"]; echo "</td>";
-                                            echo "<td>
-
-                                        <a href='#.php?idPaper=".$mostrar['idPaper']."'><button class='btn btn-primary' type='button' data-toggle='modal' data-target='#exampleModal'><i class='fas fa-edit'></i></button></a>
-
-                                        <a href='#.php?idPaper=".$mostrar['idPaper']."'> <button type='button' class='btn btn-danger'><i class='far fa-trash-alt'></i></button></a>
-
-                                                 </td>";
-                                        echo "</tr>";
-                                    }
-                                    ?>
-                                    
-                                    <tbody>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="container-fluid">
 
-                    <!-- Page Heading -->
-                    <!--h1 class="h3 mb-2 text-gray-800">Tables</h1-->
-                    <!--p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-                        For more information about DataTables, please visit the <a target="_blank"
-                            href="https://datatables.net">official DataTables documentation</a>.</p-->
-
-                            <div style="padding: 10px">
-                                <a href="#"> <button type="button" class="btn btn-primary">New Profile</button></a>
-                            </div>
-                    <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Profiles</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Nombre</th>
-                                            <th>Funcion</th>
-                                        </tr>
-                                    </thead>
-                                     <?php
-                                        $conexion = mysqli_connect('localhost', 'root', '123456', 'exaver1');
-                                        $sql="SELECT *  FROM perfiles;";
-                                        $result=mysqli_query($conexion, $sql);
-
-                                        while($mostrar=mysqli_fetch_array($result))
-                                        {
-                                        
-                                        echo "<tr>";
-                                            echo "<td>"; echo $mostrar["idPerfil"]; echo "</td>";
-                                            echo "<td>"; echo $mostrar["nombre"]; echo "</td>";
-                                            echo "<td>
-
-                                        <a href='#.php?idPerfil=".$mostrar['idPerfil']."'><button class='btn btn-primary' type='button' data-toggle='modal' data-target='#exampleModal'><i class='fas fa-edit'></i></button></a>
-
-                                        <a href='#.php?idPerfil=".$mostrar['idPerfil']."'> <button type='button' class='btn btn-danger'><i class='far fa-trash-alt'></i></button></a>
-
-                                                 </td>";
-                                        echo "</tr>";
-                                    }
-                                    ?>
-                                    
-                                    <tbody>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">
