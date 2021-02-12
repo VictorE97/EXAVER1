@@ -61,6 +61,18 @@
                                 </nav>
                             </div>
 
+                            <div class="sb-sidenav-menu-heading">Proceso</div>
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Version" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                Version Examen
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="Version" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="Version.php">Version Examen</a>
+                                </nav>
+                            </div>
+
                             <!--a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePagesE1A" aria-expanded="false" aria-controls="collapsePagesE1A">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                                 EXAVER 1

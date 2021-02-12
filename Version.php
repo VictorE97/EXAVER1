@@ -106,37 +106,17 @@
         <form method="POST" action="Agregar/Agregar Version.php">
             <div class="row">
                 <div class="col">
-                    <input type="text" name="nombre" class="form-control" placeholder="Start Date " required>
-                </div>
-                <div class="col">
-                    <input type="text" name="correo" class="form-control" placeholder="Finish Date" required>
+                    <input type="text" name="nombre" class="form-control" placeholder="Name">
                 </div>
             </div> <br>
             <div class="row">
                 <div class="col">
-                    <label for="exampleFormControlSelect1">Team</label>
-                        <select class="form-control" id="exampleFormControlSelect1" name="idEquipo">
-                            <option value="0">--Selecciona una opción---</option>  
-                            <option value="1">Exaver 1</option>
-                            <option value="2">Exaver 2</option>
-                            <option value="3">Exaver 3</option>
-                            <option value="4">Edicion</option>
-                            <option value="5">Coordinacion</option>
-                        </select>
+                    <input type="date" name="fechaInicio" class="form-control" placeholder="Start Date " required>
                 </div>
                 <div class="col">
-                    <label for="exampleFormControlSelect1">Profile</label>
-                        <select class="form-control" id="exampleFormControlSelect1" name="idPerfil">
-                          <option value="0">--Selecciona una opción---</option>  
-                            <option value="1">TL</option>
-                            <option value="2">IW</option>
-                            <option value="3">P</option>
-                            <option value="4">ED</option>
-                            <option value="5">CO</option>
-                            <option value="6">D</option>
-                        </select>
+                    <input type="date" name="fechaTermino" class="form-control" placeholder="Finish Date" required>
                 </div>
-            </div>
+            </div> <br>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <input type="Submit" class="btn btn-primary" name="" value="Register User">
