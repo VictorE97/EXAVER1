@@ -293,7 +293,7 @@
                                             <a data-toggle='modal' data-id='".$mostrar["idUsuario"]."' title='Add this item' class='open-AddBookDialog btn btn-primary' href='#addBookDialog'>test</a>
                                         <a href='#.php?idUsuario=".$mostrar['idUsuario']."'--><button class='btn btn-primary' type='button' data-toggle='modal' data-target='#actualizar'><i class='fas fa-edit'></i></button></a>
                                             
-                                        <a href='#.php?idUsuario=".$mostrar['idUsuario']."'> <button type='button' class='btn btn-danger'><i class='far fa-trash-alt'></i></button></a>
+                                        <a href='EliminarUsuario.php?idUsuario=".$mostrar['idUsuario']."'> <button type='button' class='btn btn-danger'><i class='far fa-trash-alt'></i></button></a>
                                                  </td>";
 
                                         echo "</tr>";
