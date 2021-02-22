@@ -2,7 +2,7 @@
 
     session_start();
 
-    if(!isset($_SESSION['idUsuario'])){
+    if(!isset($_SESSION['id'])){
         header("Location: login.php");
     }
 
@@ -10,6 +10,22 @@
     $tipo_equipo = $_SESSION['idEquipo'];
     $tipo_perfil = $_SESSION['idPerfil'];
 
+?>
+
+<?php
+include_once 'bd/conexion.php';
+$objeto = new Conexion();
+$conexion = $objeto->Conectar();
+
+$consulta = "SELECT id, usuarios.nombre, correo, usuario, password, telefono, estatus,
+                                            equipo.nombre as nombreEquipo,
+                                            perfil.nombre as nombrePerfil
+                                       FROM usuarios
+                                       INNER JOIN equipo ON usuarios.idEquipo = equipo.idEquipo
+                                       INNER JOIN perfil ON usuarios.idPerfil = perfil.idPerfil";
+$resultado = $conexion->prepare($consulta);
+$resultado->execute();
+$data=$resultado->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -24,6 +40,17 @@
         <link href="css/styles.css" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+
+         <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <!-- CSS personalizado --> 
+    <link rel="stylesheet" href="main.css">  
+      
+      
+    <!--datables CSS básico-->
+    <link rel="stylesheet" type="text/css" href="datatables/datatables.min.css"/>
+    <!--datables estilo bootstrap 4 CSS-->  
+    <link rel="stylesheet"  type="text/css" href="datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -84,229 +111,145 @@
                         Start Bootstrap
                     </div>
                 </nav>
-            </div>
+            </div> 
             <div id="layoutSidenav_content">
-                <main>
-                    <div class="container-fluid">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                        New User
-                    </button>
+                <main> 
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Register User</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form method="POST" action="Agregar/Agregar Usuario.php">
-            <div class="row">
-                <div class="col">
-                    <input type="text" name="nombre" class="form-control" placeholder="Name" required>
-                </div>
-                <div class="col">
-                    <input type="text" name="correo" class="form-control" placeholder="E-mail" required>
-                </div>
-            </div> <br>
-            <div class="row">
-                <div class="col">
-                    <input type="text" name="usuario" class="form-control" placeholder="User" required>
-                </div>
-                <div class="col">
-                    <input type="text" name="password" class="form-control" placeholder="Password" required>
-                </div>
-            </div> <br>
-            <div class="row">
-                <div class="col">
-                    <input type="text" name="telefono" class="form-control" placeholder="Phone" required>
-                </div>
-                <div class="col">
-                    <label for="exampleFormControlSelect1">Status</label>
-                        <select class="form-control" id="exampleFormControlSelect1" name="estatus">
-                          <option>Activo</option>
-                          <option>Inactivo</option>
-                        </select>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <label for="exampleFormControlSelect1">Team</label>
-                        <select class="form-control" id="exampleFormControlSelect1" name="idEquipo">
-                            <option value="0">--Selecciona una opción---</option>  
-                            <option value="1">Exaver 1</option>
-                            <option value="2">Exaver 2</option>
-                            <option value="3">Exaver 3</option>
-                            <option value="4">Edicion</option>
-                            <option value="5">Coordinacion</option>
-                        </select>
-                </div>
-                <div class="col">
-                    <label for="exampleFormControlSelect1">Profile</label>
-                        <select class="form-control" id="exampleFormControlSelect1" name="idPerfil">
-                          <option value="0">--Selecciona una opción---</option>  
-                            <option value="1">TL</option>
-                            <option value="2">IW</option>
-                            <option value="3">P</option>
-                            <option value="4">ED</option>
-                            <option value="5">CO</option>
-                            <option value="6">D</option>
-                        </select>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <input type="Submit" class="btn btn-primary" name="" value="Register User">
-        <!--button type="button" class="btn btn-primary">Save changes</button-->
-            </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
+                <div class="container"> <br>
+                    <div class="row">
+                        <div class="col-lg-12">            
+                        <button id="btnNuevo" type="button" class="btn btn-success" data-toggle="modal">New User</button>    
+                        </div>    
+                    </div>    
+                </div> <br>
 
-<!-- Modal -->
-<div class="modal fade" id="actualizar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Update User</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form method="POST" action="Agregar/Agregar Usuario.php">
-        <input type="hidden" name="idUsuario" value="<?php echo $_GET['idUsuario'] ?>">
-            <div class="row">
-                <div class="col">
-                    <input type="text" name="nombre" class="form-control" placeholder="Name" value="<?php echo $consulta["0"]; ?>" required>
-                </div>
-                <div class="col">
-                    <input type="text" name="correo" class="form-control" placeholder="E-mail" required>
-                </div>
-            </div> <br>
-            <div class="row">
-                <div class="col">
-                    <input type="text" name="usuario" class="form-control" placeholder="User" required>
-                </div>
-                <div class="col">
-                    <input type="text" name="password" class="form-control" placeholder="Password" required>
-                </div>
-            </div> <br>
-            <div class="row">
-                <div class="col">
-                    <input type="text" name="telefono" class="form-control" placeholder="Phone" required>
-                </div>
-                <div class="col">
-                    <label for="exampleFormControlSelect1">Status</label>
-                        <select class="form-control" id="exampleFormControlSelect1" name="estatus">
-                          <option>Activo</option>
-                          <option>Inactivo</option>
-                        </select>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <label for="exampleFormControlSelect1">Team</label>
-                        <select class="form-control" id="exampleFormControlSelect1" name="idEquipo">
-                            <option value="0">--Selecciona una opción---</option>  
-                            <option value="1">Exaver 1</option>
-                            <option value="2">Exaver 2</option>
-                            <option value="3">Exaver 3</option>
-                            <option value="4">Edicion</option>
-                            <option value="5">Coordinacion</option>
-                        </select>
-                </div>
-                <div class="col">
-                    <label for="exampleFormControlSelect1">Profile</label>
-                        <select class="form-control" id="exampleFormControlSelect1" name="idPerfil">
-                          <option value="0">--Selecciona una opción---</option>  
-                            <option value="1">TL</option>
-                            <option value="2">IW</option>
-                            <option value="3">P</option>
-                            <option value="4">ED</option>
-                            <option value="5">CO</option>
-                            <option value="6">D</option>
-                        </select>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <input type="Submit" class="btn btn-primary" name="" value="Register User">
-        <!--button type="button" class="btn btn-primary">Save changes</button-->
-            </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-
-                    <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Users</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
+                <div class="container">
+                    <div class="row">
+                            <div class="col-lg-12">
+                                <div class="table-responsive">        
+                                    <table id="tablaPersonas" class="table table-striped table-bordered table-condensed" style="width:100%">
+                                    <thead class="text-center">
                                         <tr>
-                                            <th>ID</th>
+                                            <th>Id</th>
                                             <th>Nombre</th>
                                             <th>Correo</th>
                                             <th>Usuario</th>
                                             <th>Password</th>
                                             <th>Telefono</th>
-                                            <th>Estatus</th>                                                       <th>Equipo</th>
+                                            <th>Estatus</th>
+                                            <th>Equipo</th>
                                             <th>Perfil</th>
-                                            <th>Funciones</th>
+                                            <th>Acciones</th>
                                         </tr>
                                     </thead>
-                                     <?php
-                                        $conexion = mysqli_connect('localhost', 'root', '123456', 'bd_final');
-                                        $sql="SELECT idUsuario, usuarios.nombre, correo, usuario, password, telefono, estatus,
-                                            equipo.nombre as nombreEquipo,
-                                            perfil.nombre as nombrePerfil
-                                       FROM usuarios
-                                       INNER JOIN equipo ON usuarios.idEquipo = equipo.idEquipo
-                                       INNER JOIN perfil ON usuarios.idPerfil = perfil.idPerfil";
-                                        $result=mysqli_query($conexion, $sql);
-
-                                        while($mostrar=mysqli_fetch_array($result))
-                                        {
-                                        
-                                        echo "<tr>";
-                                            echo "<td>"; echo $mostrar["idUsuario"]; echo "</td>";
-                                            echo "<td>"; echo $mostrar["nombre"]; echo "</td>";
-                                            echo "<td>"; echo $mostrar["correo"]; echo "</td>";
-                                            echo "<td>"; echo $mostrar["usuario"]; echo "</td>";
-                                            echo "<td>"; echo $mostrar["password"]; echo "</td>";
-                                            echo "<td>"; echo $mostrar["telefono"]; echo "</td>";
-                                            echo "<td>"; echo $mostrar["estatus"]; echo "</td>";
-                                            echo "<td>"; echo $mostrar["nombreEquipo"]; echo "</td>";
-                                            echo "<td>"; echo $mostrar["nombrePerfil"]; echo "</td>";
-                                            echo "<td>
-                                            <a data-toggle='modal' data-id='".$mostrar["idUsuario"]."' title='Add this item' class='open-AddBookDialog btn btn-primary' href='#addBookDialog'>test</a>
-                                        <a href='#.php?idUsuario=".$mostrar['idUsuario']."'--><button class='btn btn-primary' type='button' data-toggle='modal' data-target='#actualizar'><i class='fas fa-edit'></i></button></a>
-                                            
-                                        <a href='Eliminar/EliminarUsuario.php?idUsuario=".$mostrar['idUsuario']."'> <button type='button' class='btn btn-danger'><i class='far fa-trash-alt'></i></button></a>
-                                                 </td>";
-
-                                        echo "</tr>";
-                                    }
-                                    ?>
-                                    
                                     <tbody>
-                                    </tbody>
-                                </table>
+                                        <?php                            
+                                        foreach($data as $dat) {                                                        
+                                        ?>
+                                        <tr>
+                                            <td><?php echo $dat['id'] ?></td>
+                                            <td><?php echo $dat['nombre'] ?></td>
+                                            <td><?php echo $dat['correo'] ?></td>
+                                            <td><?php echo $dat['usuario'] ?></td>
+                                            <td><?php echo $dat['password'] ?></td>
+                                            <td><?php echo $dat['telefono'] ?></td>
+                                            <td><?php echo $dat['estatus'] ?></td>
+                                            <td><?php echo $dat['nombreEquipo'] ?></td>
+                                            <td><?php echo $dat['nombrePerfil'] ?></td>    
+                                            <td></td>
+                                        </tr>
+                                        <?php
+                                            }
+                                        ?>                                
+                                    </tbody>        
+                                </table>                    
+                                </div>
                             </div>
-                        </div>
-                    </div>
+                    </div>  
                 </div>
+
+                <!--Modal para CRUD-->
+<div class="modal fade" id="modalCRUD" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <form id="formPersonas">    
+            <div class="modal-body">
+                <div class="row">
+                <div class="col">
+                    <input type="text" id="nombre" class="form-control" placeholder="Name" required>
+                </div>
+                <div class="col">
+                    <input type="email" id="correo" class="form-control" placeholder="E-mail" required>
+                </div>
+                </div> <br>
+                
+                <div class="row">
+                <div class="col">
+                    <input type="text" id="usuario" class="form-control" placeholder="User" required>
+                </div>
+                <div class="col">
+                    <input type="password" id="password" class="form-control" placeholder="Password" required>
+                </div>
+                </div> <br>
+
+                <div class="row">
+                <div class="col">
+                    <input type="text" id="telefono" class="form-control" placeholder="Phone" required>
+                </div>
+                <div class="col">
+                    <label for="estatus">Status</label>
+                        <select class="form-control" id="estatus">
+                          <option>Activo</option>
+                          <option>Inactivo</option>
+                        </select>
+                </div>
+                </div>
+
+               <div class="row">
+                <div class="col">
+                    <label for="idEquipo">Team</label>
+                        <select class="form-control" id="idEquipo">
+                            <option value="0">--Selecciona una opción---</option>  
+                            <option value="1">Exaver 1</option>
+                            <option value="2">Exaver 2</option>
+                            <option value="3">Exaver 3</option>
+                            <option value="4">Edicion</option>
+                            <option value="5">Coordinacion</option>
+                        </select>
+                </div>
+                <div class="col">
+                    <label for="idPerfil">Profile</label>
+                        <select class="form-control" id="idPerfil">
+                          <option value="0">--Selecciona una opción---</option>  
+                            <option value="1">TL</option>
+                            <option value="2">IW</option>
+                            <option value="3">P</option>
+                            <option value="4">ED</option>
+                            <option value="5">CO</option>
+                            <option value="6">D</option>
+                        </select>
+                </div>
+            </div>           
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
+                <button type="submit" id="btnGuardar" class="btn btn-dark">Guardar</button>
+            </div>
+        </form>    
+        </div>
+    </div>
+</div>
+
+                   
+
+
+
+                    
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
@@ -474,5 +417,14 @@
         <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
         <script src="assets/demo/datatables-demo.js"></script>
+         <!-- jQuery, Popper.js, Bootstrap JS -->
+    <script src="jquery/jquery-3.3.1.min.js"></script>
+    <script src="popper/popper.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+      
+    <!-- datatables JS -->
+    <script type="text/javascript" src="datatables/datatables.min.js"></script>    
+     
+    <script type="text/javascript" src="main.js"></script>  
     </body>
 </html>
