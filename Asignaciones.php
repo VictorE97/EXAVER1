@@ -17,7 +17,16 @@ include_once 'bd/conexion.php';
 $objeto = new Conexion();
 $conexion = $objeto->Conectar();
 
-$consulta = "select * from usuarios";
+$consulta = "SELECT usuarios.nombre AS nombreUsuario, equipo.nombre AS nombreEquipo, perfil.nombre AS nombrePerfil, id, equipo.idEquipo, perfil.idPerfil
+FROM usuarios
+LEFT JOIN usuarios_equipo
+ON usuarios.id = usuarios_equipo.idUsuario
+LEFT JOIN equipo
+ON equipo.idEquipo = usuarios_equipo.idEquipo
+LEFT JOIN usuarios_perfiles
+ON usuarios.id = usuarios_perfiles.idUsuario
+LEFT JOIN perfil
+ON perfil.idPerfil = usuarios_perfiles.idPerfil";
 $resultado = $conexion->prepare($consulta);
 $resultado->execute();
 $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
@@ -68,9 +77,10 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
             <div id="layoutSidenav_nav">
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
-                        <div class="nav"> 
+                        <div class="nav">
+                            
                             <!--?php if($tipo_perfil == 5) { ?-->
-
+                            
                                 <div class="sb-sidenav-menu-heading">Gestion</div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
@@ -107,8 +117,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                             </div>
 
 
-                        <!--?php require('Menu/Menu5.php'); } ?--> 
-                               
+                        <!--?php } ?-->         
                         </div>
                     </div>
 
@@ -137,14 +146,9 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <thead class="text-center">
                                         <tr>
                                             <th>Id</th>
-                                            <th>Nombre</th>
-                                            <th>Correo</th>
                                             <th>Usuario</th>
-                                            <th>Password</th>
-                                            <th>Telefono</th>
-                                            <th>Estatus</th>
-                                            <!--th>Equipo</th>
-                                            <th>Perfil</th-->
+                                            <th>Equipo</th>
+                                            <th>Perfil</th>
                                             <th>Acciones</th>
                                         </tr>
                                     </thead>
@@ -154,12 +158,10 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                                         ?>
                                         <tr>
                                             <td><?php echo $dat['id'] ?></td>
-                                            <td><?php echo $dat['nombre'] ?></td>
-                                            <td><?php echo $dat['correo'] ?></td>
-                                            <td><?php echo $dat['usuario'] ?></td>
-                                            <td><?php echo $dat['password'] ?></td>
-                                            <td><?php echo $dat['telefono'] ?></td>
-                                            <td><?php echo $dat['estatus'] ?></td>   
+                                            <td><?php echo $dat['nombreUsuario'] ?></td>
+                                            <td><?php echo $dat['nombreEquipo'] ?><input id="teamID" name="teamId" type="hidden" value="<?php echo $dat['idEquipo'] ?>"></td>
+                                            
+                                            <td><?php echo $dat['nombrePerfil'] ?><input id="profID" name="profId" type="hidden" value="<?php echo $dat['idPerfil'] ?>"></td>  
                                             <td></td>
                                         </tr>
                                         <?php
@@ -187,34 +189,33 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                 <div class="col">
                     <input type="text" id="nombre" class="form-control" placeholder="Name" required>
                 </div>
-                <div class="col">
-                    <input type="email" id="correo" class="form-control" placeholder="E-mail" required>
-                </div>
-                </div> <br>
-                
-                <div class="row">
-                <div class="col">
-                    <input type="text" id="usuario" class="form-control" placeholder="User" required>
-                </div>
-                <div class="col">
-                    <input type="password" id="password" class="form-control" placeholder="Password" required>
-                </div>
                 </div> <br>
 
-                <div class="row">
+               <div class="row">
                 <div class="col">
-                    <input type="text" id="telefono" class="form-control" placeholder="Phone" required>
-                </div>
-                <div class="col">
-                    <label for="estatus">Status</label>
-                        <select class="form-control" id="estatus">
-                          <option>Activo</option>
-                          <option>Inactivo</option>
+                    <label for="nombreEquipo">Team</label>
+                        <select class="form-control" id="nombreEquipo">
+                            <option value="0">--Selecciona una opción---</option>  
+                            <option value="1">Exaver 1</option>
+                            <option value="2">Exaver 2</option>
+                            <option value="3">Exaver 3</option>
+                            <option value="4">Edicion</option>
+                            <option value="5">Coordinacion</option>
                         </select>
                 </div>
+                <div class="col">
+                    <label for="idPerfil">Profile</label>
+                        <select class="form-control" id="idPerfil">
+                          <option value="0">--Selecciona una opción---</option>  
+                            <option value="1">TL</option>
+                            <option value="2">IW</option>
+                            <option value="3">P</option>
+                            <option value="4">ED</option>
+                            <option value="5">CO</option>
+                            <option value="6">D</option>
+                        </select>
                 </div>
-
-               
+            </div>           
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
@@ -405,6 +406,6 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
     <!-- datatables JS -->
     <script type="text/javascript" src="datatables/datatables.min.js"></script>    
      
-    <script type="text/javascript" src="main.js"></script>  
+    <script type="text/javascript" src="main2.js"></script>  
     </body>
 </html>

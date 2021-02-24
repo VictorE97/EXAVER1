@@ -9,7 +9,7 @@
         $usuario = $_POST['usuario'];
         $password = $_POST['password'];
         
-        $sql = "SELECT id, nombre, correo, usuario, password, telefono, estatus, idEquipo, idPerfil  FROM usuarios WHERE usuario = '$usuario'";
+        $sql = "SELECT id, nombre, correo, usuario, password, telefono, estatus  FROM usuarios WHERE usuario = '$usuario'";
         $resultado = $mysqli->query($sql);
         $num = $resultado->num_rows;
         
@@ -22,8 +22,8 @@
                 
                 $_SESSION['id'] = $row['id'];
                 $_SESSION['nombre'] = $row['nombre'];
-                $_SESSION['idEquipo'] = $row['idEquipo'];
-                $_SESSION['idPerfil'] = $row['idPerfil'];
+                //$_SESSION['idEquipo'] = $row['idEquipo'];
+                //$_SESSION['idPerfil'] = $row['idPerfil'];
                 
                 header("Location: index.php");
                 

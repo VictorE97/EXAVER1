@@ -11,28 +11,28 @@ $usuario = (isset($_POST['usuario'])) ? $_POST['usuario'] : '';
 $password = (isset($_POST['password'])) ? $_POST['password'] : '';
 $telefono = (isset($_POST['telefono'])) ? $_POST['telefono'] : '';
 $estatus = (isset($_POST['estatus'])) ? $_POST['estatus'] : '';
-$idEquipo = (isset($_POST['idEquipo'])) ? $_POST['idEquipo'] : '';
-$idPerfil = (isset($_POST['idPerfil'])) ? $_POST['idPerfil'] : '';
+//$idEquipo = (isset($_POST['idEquipo'])) ? $_POST['idEquipo'] : '';
+//$idPerfil = (isset($_POST['idPerfil'])) ? $_POST['idPerfil'] : '';
 $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
 $id = (isset($_POST['id'])) ? $_POST['id'] : '';
 
 switch($opcion){
     case 1: //alta
-        $consulta = "INSERT INTO usuarios (nombre, correo, usuario, password, telefono, estatus, idEquipo, idPerfil) VALUES('$nombre', '$correo', '$usuario', '$password', '$telefono', '$estatus', '$idEquipo', '$idPerfil') ";			
+        $consulta = "INSERT INTO usuarios (nombre, correo, usuario, password, telefono, estatus) VALUES('$nombre', '$correo', '$usuario', sha1('$password'), '$telefono', '$estatus') ";			
         $resultado = $conexion->prepare($consulta);
         $resultado->execute(); 
 
-        $consulta = "SELECT id, nombre, correo, usuario, password, telefono, estatus, idEquipo, idPerfil FROM usuarios ORDER BY id DESC LIMIT 1";
+        $consulta = "SELECT id, nombre, correo, usuario, password, telefono, estatus FROM usuarios ORDER BY id DESC LIMIT 1";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
         break;
     case 2: //modificación
-        $consulta = "UPDATE usuarios SET nombre='$nombre', correo='$correo', usuario='$usuario', password='$password', telefono='$telefono', estatus='$estatus', idEquipo='$idEquipo', idPerfil='$idPerfil' WHERE id='$id' ";		
+        $consulta = "UPDATE usuarios SET nombre='$nombre', correo='$correo', usuario='$usuario', password='$password', telefono='$telefono', estatus='$estatus' WHERE id='$id' ";		
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();        
         
-        $consulta = "SELECT id, nombre, correo, usuario, password, telefono, estatus, idEquipo, idPerfil FROM personas WHERE id='$id' ";       
+        $consulta = "SELECT id, nombre, correo, usuario, password, telefono, estatus FROM personas WHERE id='$id' ";       
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);

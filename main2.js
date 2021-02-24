@@ -30,7 +30,7 @@ $("#btnNuevo").click(function(){
     $(".modal-header").css("color", "white");
     $(".modal-title").text("New User");            
     $("#modalCRUD").modal("show");        
-    id=null;
+    idVersion=null;
     opcion = 1; //alta
 });    
     
@@ -39,24 +39,16 @@ var fila; //capturar la fila para editar o borrar el registro
 //botón EDITAR    
 $(document).on("click", ".btnEditar", function(){
     fila = $(this).closest("tr");
-    id = parseInt(fila.find('td:eq(0)').text());
+    idVersion = parseInt(fila.find('td:eq(0)').text());
     nombre = fila.find('td:eq(1)').text();
-    correo = fila.find('td:eq(2)').text();
-    usuario = fila.find('td:eq(3)').text();
-    password = fila.find('td:eq(4)').text();
-    telefono = fila.find('td:eq(5)').text();
-    estatus = fila.find('td:eq(6)').text();
-    //idEquipo = parseInt(fila.find('td:eq(7)').text());
-    //idPerfil = parseInt(fila.find('td:eq(8)').text());
+    idEquipo = parseInt(fila.find('input[type="hidden" name="teamId"]').val());
+    alert(idEquipo);
+    //idPerfil = parseInt(fila.find('td:eq(3)').text());
+    //fila.find('input[type="hidden" name="teamId"]').val());
     
     $("#nombre").val(nombre);
-    $("#correo").val(correo);
-    $("#usuario").val(usuario);
-    $("#password").val(password);
-    $("#telefono").val(telefono);
-    $("#estatus").val(estatus);
-    //$("#idEquipo").val(idEquipo);
-    //$("#idPerfil").val(idPerfil);
+    $("#fechaInicio").val(fechaInicio);
+    $("#fechaTermino").val(fechaTermino);
     opcion = 2; //editar
     
     $(".modal-header").css("background-color", "#007bff");
@@ -69,15 +61,15 @@ $(document).on("click", ".btnEditar", function(){
 //botón BORRAR
 $(document).on("click", ".btnBorrar", function(){    
     fila = $(this);
-    id = parseInt($(this).closest("tr").find('td:eq(0)').text());
+    idVersion = parseInt($(this).closest("tr").find('td:eq(0)').text());
     opcion = 3 //borrar
-    var respuesta = confirm("¿Está seguro de eliminar el registro: "+id+"?");
+    var respuesta = confirm("¿Está seguro de eliminar el registro: "+idVersion+"?");
     if(respuesta){
         $.ajax({
-            url: "bd/crud.php",
+            url: "bd/crudVersion.php",
             type: "POST",
             dataType: "json",
-            data: {opcion:opcion, id:id},
+            data: {opcion:opcion, idVersion:idVersion},
             success: function(){
                 tablaPersonas.row(fila.parents('tr')).remove().draw();
             }
@@ -88,39 +80,24 @@ $(document).on("click", ".btnBorrar", function(){
 $("#formPersonas").submit(function(e){
     e.preventDefault();    
     nombre = $.trim($("#nombre").val());
-    correo = $.trim($("#correo").val());
-    usuario = $.trim($("#usuario").val());
-    password = $.trim($("#password").val());
-    telefono = $.trim($("#telefono").val());
-    estatus = $.trim($("#estatus").val());
-    //idEquipo = $.trim($("#idEquipo").val());
-    //idPerfil = $.trim($("#idPerfil").val());
+    fechaInicio = $.trim($("#fechaInicio").val());
+    fechaTermino = $.trim($("#fechaTermino").val());
     alert(nombre);
-    alert(correo);
-    alert(usuario);
-    alert(password);
-    alert(telefono);
-    alert(estatus);
-    //alert(idEquipo);
-    //alert(idPerfil);  
+    alert(fechaInicio);
+    alert(fechaTermino);
     $.ajax({
-        url: "bd/crud.php",
+        url: "bd/crudVersion.php",
         type: "POST",
         dataType: "json",
-        data: {nombre:nombre, correo:correo, usuario:usuario, password:password, telefono:telefono, estatus:estatus, id:id, opcion:opcion},
+        data: {nombre:nombre, fechaInicio:fechaInicio, fechaTermino:fechaTermino, idVersion:idVersion, opcion:opcion},
         success: function(data){  
             console.log(data);
-            id = data[0].id;            
+            idVersion = data[0].idVersion;            
             nombre = data[0].nombre;
-            correo = data[0].correo;
-            usuario = data[0].usuario;
-            password = data[0].password;
-            telefono = data[0].telefono;
-            estatus = data[0].estatus;
-            //idEquipo = data[0].idEquipo;
-            //idPerfil = data[0].idPerfil;
-            if(opcion == 1){tablaPersonas.row.add([id,nombre,correo,usuario,password,telefono,estatus]).draw();}
-            else{tablaPersonas.row(fila).data([id,nombre,correo,usuario,password,telefono,estatus]).draw();}            
+            fechaInicio = data[0].fechaInicio;
+            fechaTermino = data[0].fechaTermino;
+            if(opcion == 1){tablaPersonas.row.add([idVersion,nombre,fechaInicio,fechaTermino]).draw();}
+            else{tablaPersonas.row(fila).data([idVersion,nombre,fechaInicio,fechaTermino]).draw();}            
         }        
     });
     $("#modalCRUD").modal("hide");    
