@@ -130,15 +130,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
             <div id="layoutSidenav_content">
                 <main> 
 
-                <div class="container"> <br>
-                    <div class="row">
-                        <div class="col-lg-12">            
-                        <button id="btnNuevo" type="button" class="btn btn-success" data-toggle="modal">New User</button>    
-                        </div>    
-                    </div>    
-                </div> <br>
-
-                <div class="container">
+                <div class="container"> <br><br>
                     <div class="row">
                             <div class="col-lg-12">
                                 <div class="table-responsive">        
@@ -160,7 +152,6 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                                             <td><?php echo $dat['id'] ?></td>
                                             <td><?php echo $dat['nombreUsuario'] ?></td>
                                             <td><?php echo $dat['nombreEquipo'] ?><input id="teamID" name="teamId" type="hidden" value="<?php echo $dat['idEquipo'] ?>"></td>
-                                            
                                             <td><?php echo $dat['nombrePerfil'] ?><input id="profID" name="profId" type="hidden" value="<?php echo $dat['idPerfil'] ?>"></td>  
                                             <td></td>
                                         </tr>
@@ -174,7 +165,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                     </div>  
                 </div>
 
-                <!--Modal para CRUD-->
+                <!--Modal para Actualizar Equipo-->
 <div class="modal fade" id="modalCRUD" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -193,8 +184,8 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
 
                <div class="row">
                 <div class="col">
-                    <label for="nombreEquipo">Team</label>
-                        <select class="form-control" id="nombreEquipo">
+                    <label for="idEquipo">Team</label>
+                        <select class="form-control" id="idEquipo">
                             <option value="0">--Selecciona una opción---</option>  
                             <option value="1">Exaver 1</option>
                             <option value="2">Exaver 2</option>
@@ -203,10 +194,39 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                             <option value="5">Coordinacion</option>
                         </select>
                 </div>
+            </div>           
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
+                <button type="submit" id="btnGuardar" class="btn btn-dark">Guardar</button>
+            </div>
+        </form>    
+        </div>
+    </div>
+</div>
+
+<!--Modal para Actualizar Perfil-->
+<div class="modal fade" id="modalActualizarPerfil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <form id="formPerfil">    
+            <div class="modal-body">
+                <div class="row">
+                <div class="col">
+                    <input type="text" id="nombre" class="form-control" placeholder="Name" required>
+                </div>
+                </div> <br>
+
+               <div class="row">
                 <div class="col">
                     <label for="idPerfil">Profile</label>
                         <select class="form-control" id="idPerfil">
-                          <option value="0">--Selecciona una opción---</option>  
+                            <option value="0">--Selecciona una opción---</option>  
                             <option value="1">TL</option>
                             <option value="2">IW</option>
                             <option value="3">P</option>

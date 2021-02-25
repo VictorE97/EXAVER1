@@ -3,7 +3,7 @@ $(document).ready(function(){
        "columnDefs":[{
         "targets": -1,
         "data":null,
-        "defaultContent": "<div class='text-center'><div class='btn-group'><button class='btn btn-primary btnEditar'>Editar</button><button class='btn btn-danger btnBorrar'>Borrar</button></div></div>"  
+        "defaultContent": "<div class='text-center'><div class='btn-group'><button class='btn btn-primary btnEditarEquipo'>Team</button><button class='btn btn-primary btnEditarPerfil'>Profile</button></div></div>"  
        }],
         
         //Para cambiar el lenguaje a español
@@ -30,77 +30,104 @@ $("#btnNuevo").click(function(){
     $(".modal-header").css("color", "white");
     $(".modal-title").text("New User");            
     $("#modalCRUD").modal("show");        
-    idVersion=null;
+    idusuarios_equipo=null;
     opcion = 1; //alta
 });    
     
 var fila; //capturar la fila para editar o borrar el registro
     
-//botón EDITAR    
-$(document).on("click", ".btnEditar", function(){
+//botón EDITAR Equipo    
+$(document).on("click", ".btnEditarEquipo", function(){
     fila = $(this).closest("tr");
-    idVersion = parseInt(fila.find('td:eq(0)').text());
+    idusuarios_equipo = parseInt(fila.find('td:eq(0)').text());
     nombre = fila.find('td:eq(1)').text();
-    idEquipo = parseInt(fila.find('input[type="hidden" name="teamId"]').val());
-    alert(idEquipo);
-    //idPerfil = parseInt(fila.find('td:eq(3)').text());
-    //fila.find('input[type="hidden" name="teamId"]').val());
+    idEquipo = parseInt(fila.find('td:eq(2)').text());
+    idPerfil = parseInt(fila.find('td:eq(3)').text());
     
     $("#nombre").val(nombre);
-    $("#fechaInicio").val(fechaInicio);
-    $("#fechaTermino").val(fechaTermino);
+    $("#idEquipo").val(idEquipo);
+    $("#idPerfil").val(idPerfil);
     opcion = 2; //editar
     
     $(".modal-header").css("background-color", "#007bff");
     $(".modal-header").css("color", "white");
-    $(".modal-title").text("Update User");            
+    $(".modal-title").text("Update Team");            
     $("#modalCRUD").modal("show");  
     
 });
 
-//botón BORRAR
-$(document).on("click", ".btnBorrar", function(){    
-    fila = $(this);
-    idVersion = parseInt($(this).closest("tr").find('td:eq(0)').text());
-    opcion = 3 //borrar
-    var respuesta = confirm("¿Está seguro de eliminar el registro: "+idVersion+"?");
-    if(respuesta){
-        $.ajax({
-            url: "bd/crudVersion.php",
-            type: "POST",
-            dataType: "json",
-            data: {opcion:opcion, idVersion:idVersion},
-            success: function(){
-                tablaPersonas.row(fila.parents('tr')).remove().draw();
-            }
-        });
-    }   
+//botón EDITAR Perfil    
+$(document).on("click", ".btnEditarPerfil", function(){
+    fila = $(this).closest("tr");
+    idusuarios_perfiles = parseInt(fila.find('td:eq(0)').text());
+    nombre = fila.find('td:eq(1)').text();
+    idEquipo = parseInt(fila.find('td:eq(2)').text());
+    idPerfil = parseInt(fila.find('td:eq(3)').text());
+    
+    $("#nombre").val(nombre);
+    $("#idEquipo").val(idEquipo);
+    $("#idPerfil").val(idPerfil);
+    opcion = 3; //editar
+    
+    $(".modal-header").css("background-color", "#007bff");
+    $(".modal-header").css("color", "white");
+    $(".modal-title").text("Update Profile");            
+    $("#modalActualizarPerfil").modal("show");  
+    
 });
+
     
 $("#formPersonas").submit(function(e){
     e.preventDefault();    
     nombre = $.trim($("#nombre").val());
-    fechaInicio = $.trim($("#fechaInicio").val());
-    fechaTermino = $.trim($("#fechaTermino").val());
+    idEquipo = $.trim($("#idEquipo").val());
+    idPerfil = $.trim($("#idPerfil").val());
     alert(nombre);
-    alert(fechaInicio);
-    alert(fechaTermino);
+    alert(idEquipo);
+    alert(idPerfil);  
     $.ajax({
-        url: "bd/crudVersion.php",
+        url: "bd/crudAsignaciones.php",
         type: "POST",
         dataType: "json",
-        data: {nombre:nombre, fechaInicio:fechaInicio, fechaTermino:fechaTermino, idVersion:idVersion, opcion:opcion},
+        data: {nombre:nombre, idEquipo:idEquipo, idPerfil:idPerfil, idusuarios_equipo:idusuarios_equipo, opcion:opcion},
         success: function(data){  
             console.log(data);
-            idVersion = data[0].idVersion;            
+            idusuarios_equipo = data[0].idusuarios_equipo;            
             nombre = data[0].nombre;
-            fechaInicio = data[0].fechaInicio;
-            fechaTermino = data[0].fechaTermino;
-            if(opcion == 1){tablaPersonas.row.add([idVersion,nombre,fechaInicio,fechaTermino]).draw();}
-            else{tablaPersonas.row(fila).data([idVersion,nombre,fechaInicio,fechaTermino]).draw();}            
+            idEquipo = data[0].idEquipo;
+            idPerfil = data[0].idPerfil;
+            if(opcion == 1){tablaPersonas.row.add([idusuarios_equipo,nombre,idEquipo,idPerfil]).draw();}
+            else{tablaPersonas.row(fila).data([id,nombre,idEquipo,idPerfil]).draw();}            
         }        
     });
     $("#modalCRUD").modal("hide");    
+    
+});
+
+$("#formPerfil").submit(function(e){
+    e.preventDefault();    
+    nombre = $.trim($("#nombre").val());
+    idEquipo = $.trim($("#idEquipo").val());
+    idPerfil = $.trim($("#idPerfil").val());
+    alert(nombre);
+    alert(idEquipo);
+    alert(idPerfil);  
+    $.ajax({
+        url: "bd/crudAsignaciones.php",
+        type: "POST",
+        dataType: "json",
+        data: {nombre:nombre, idEquipo:idEquipo, idPerfil:idPerfil, idusuarios_perfiles:idusuarios_perfiles, opcion:opcion},
+        success: function(data){  
+            console.log(data);
+            idusuarios_perfiles = data[0].idusuarios_perfiles;            
+            nombre = data[0].nombre;
+            idEquipo = data[0].idEquipo;
+            idPerfil = data[0].idPerfil;
+            if(opcion == 1){tablaPersonas.row.add([idusuarios_perfiles,nombre,idEquipo,idPerfil]).draw();}
+            else{tablaPersonas.row(fila).data([id,nombre,idEquipo,idPerfil]).draw();}            
+        }        
+    });
+    $("#modalActualizarPerfil").modal("hide");    
     
 });
 
