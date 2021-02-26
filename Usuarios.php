@@ -68,10 +68,12 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
             <div id="layoutSidenav_nav">
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
-                        <div class="nav"> 
+                        <div class="nav">
+
+                            <?php include ('Menu/Menu5.php'); ?>
                             <!--?php if($tipo_perfil == 5) { ?-->
 
-                                <div class="sb-sidenav-menu-heading">Gestion</div>
+                                <!--div class="sb-sidenav-menu-heading">Gestion</div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                                 Usuarios
@@ -104,7 +106,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="Version.php">Version Examen</a>
                                 </nav>
-                            </div>
+                            </div-->
 
 
                         <!--?php require('Menu/Menu5.php'); } ?--> 

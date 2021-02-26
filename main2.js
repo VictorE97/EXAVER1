@@ -41,6 +41,7 @@ $(document).on("click", ".btnEditarEquipo", function(){
     fila = $(this).closest("tr");
     idusuarios_equipo = parseInt(fila.find('td:eq(0)').text());
     nombre = fila.find('td:eq(1)').text();
+    equipo = fila.find('td:eq(2)').text();
     idEquipo = parseInt(fila.find('td:eq(2)').text());
     idPerfil = parseInt(fila.find('td:eq(3)').text());
     
@@ -51,8 +52,17 @@ $(document).on("click", ".btnEditarEquipo", function(){
     
     $(".modal-header").css("background-color", "#007bff");
     $(".modal-header").css("color", "white");
-    $(".modal-title").text("Update Team");            
-    $("#modalCRUD").modal("show");  
+    if(equipo==""){
+        $("#idUsuarioModalEquipo").val(idusuarios_equipo);
+        $(".modal-title").text("Register Team");
+        alert($("#idUsuarioModalEquipo").val());
+        $("#ModalEquipo").modal("show");
+    }else{
+        $(".modal-title").text("Update Team");
+
+        $("#modalCRUD").modal("show"); 
+    }
+      
     
 });
 
@@ -64,8 +74,8 @@ $(document).on("click", ".btnEditarPerfil", function(){
     idEquipo = parseInt(fila.find('td:eq(2)').text());
     idPerfil = parseInt(fila.find('td:eq(3)').text());
     
-    $("#nombre").val(nombre);
-    $("#idEquipo").val(idEquipo);
+    $("#nombrePerfil").val(nombre);
+    $("#idEquipo").val(idEquipo); 
     $("#idPerfil").val(idPerfil);
     opcion = 3; //editar
     

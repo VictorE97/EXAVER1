@@ -48,8 +48,12 @@
                         <div class="nav">
                             
                             <!--?php if($tipo_perfil == 5) { ?-->
+
+                            <?php include ('Menu/Menu5.php'); ?>
                             
-                            <div class="sb-sidenav-menu-heading">Gestion</div>
+                            
+                            
+                            <!--div class="sb-sidenav-menu-heading">Gestion</div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                                 Usuarios

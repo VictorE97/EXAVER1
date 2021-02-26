@@ -7,6 +7,8 @@
     }
 
     $nombre = $_SESSION['nombre'];
+    $idUsuarioSesion = $_SESSION['id'];
+    echo ($idUsuarioSesion);
     //$tipo_equipo = $_SESSION['idEquipo'];
     //$tipo_perfil = $_SESSION['idPerfil'];
 
@@ -78,10 +80,10 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                            
+                            <?php include ('Menu/Menu5.php'); ?>
                             <!--?php if($tipo_perfil == 5) { ?-->
                             
-                                <div class="sb-sidenav-menu-heading">Gestion</div>
+                                <!--div class="sb-sidenav-menu-heading">Gestion</div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                                 Usuarios
@@ -114,7 +116,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="Version.php">Version Examen</a>
                                 </nav>
-                            </div>
+                            </div-->
 
 
                         <!--?php } ?-->         
@@ -132,9 +134,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
 
                 <div class="container"> <br>
                 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalEquipo">
-  Register Team
-</button>
+
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalPerfil">
   Register Profile
 </button>
@@ -153,7 +153,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
         <form action="Agregar/Agregar_Equipo.php" method="POST">
             <div class="row">
                 <div class="col">
-                    <input type="text" name="idUsuario" class="form-control" placeholder="User">
+                    <input type="hidden" name="idUsuarioModalEquipo" id="idUsuarioModalEquipo" class="form-control" placeholder="User">
                 </div>
                 <div class="col">
                 <label for="idEquipo">Team</label>
@@ -169,10 +169,9 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
             </div><br>
             <div class="row">
                 <div class="col">
-                    <input type="datetime-local" name="fechaHora" class="form-control" placeholder="DateTime">
                 </div>
                 <div class="col">
-                    <input type="text" name="idUsuarioAsigno" class="form-control" placeholder="User Assigned">
+                    <input type="hidden" name="idUsuarioAsigno" id="idUsuarioAsigno" class="form-control" placeholder="User Assigned" value="<?php echo $_SESSION['id']; ?>">
                 </div>
             </div>
             <div class="modal-footer">
@@ -318,7 +317,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
             <div class="modal-body">
                 <div class="row">
                 <div class="col">
-                    <input type="text" id="nombre" class="form-control" placeholder="Name" required>
+                    <input type="text" id="nombrePerfil" class="form-control" placeholder="Name"  required>
                 </div>
                 </div> <br>
 
