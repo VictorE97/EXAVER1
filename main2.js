@@ -3,7 +3,7 @@ $(document).ready(function(){
        "columnDefs":[{
         "targets": -1,
         "data":null,
-        "defaultContent": "<div class='text-center'><div class='btn-group'><button class='btn btn-primary btnEditarEquipo'>Team</button><button class='btn btn-primary btnEditarPerfil'>Profile</button></div></div>"  
+        "defaultContent": "<div class='text-center'><div class='btn-group'><button class='btn btn-primary btnEditarEquipo'>Team</button><button class='btn btn-success btnEditarPerfil'>Profile</button></div></div>"  
        }],
         
         //Para cambiar el lenguaje a español

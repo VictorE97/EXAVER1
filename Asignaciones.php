@@ -128,9 +128,109 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                 </nav>
             </div> 
             <div id="layoutSidenav_content">
-                <main> 
+                <main>
 
-                <div class="container"> <br><br>
+                <div class="container"> <br>
+                <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalEquipo">
+  Register Team
+</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalPerfil">
+  Register Profile
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="ModalEquipo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Register Team</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="Agregar/Agregar_Equipo.php" method="POST">
+            <div class="row">
+                <div class="col">
+                    <input type="text" name="idUsuario" class="form-control" placeholder="User">
+                </div>
+                <div class="col">
+                <label for="idEquipo">Team</label>
+                        <select class="form-control" id="idEquipo" name="idEquipo">
+                            <option value="0">--Selecciona una opción---</option>  
+                            <option value="1">Exaver 1</option>
+                            <option value="2">Exaver 2</option>
+                            <option value="3">Exaver 3</option>
+                            <option value="4">Edicion</option>
+                            <option value="5">Coordinacion</option>
+                        </select>
+                </div>
+            </div><br>
+            <div class="row">
+                <div class="col">
+                    <input type="datetime-local" name="fechaHora" class="form-control" placeholder="DateTime">
+                </div>
+                <div class="col">
+                    <input type="text" name="idUsuarioAsigno" class="form-control" placeholder="User Assigned">
+                </div>
+            </div>
+            <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <input type="submit" class="btn btn-primary" value="Ok">
+      </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="ModalPerfil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Register Profile</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form action="Agregar/Agregar_Perfil.php" method="POST">
+            <div class="row">
+                <div class="col">
+                    <input type="text" name="idUsuario" class="form-control" placeholder="User">
+                </div>
+                <div class="col">
+                <label for="idPerfil">Profile</label>
+                        <select class="form-control" id="idPerfil" name="idPerfil">
+                            <option value="0">--Selecciona una opción---</option>  
+                            <option value="1">TL</option>
+                            <option value="2">IW</option>
+                            <option value="3">P</option>
+                            <option value="4">ED</option>
+                            <option value="5">CO</option>
+                            <option value="6">D</option>
+                        </select>
+                </div>
+            </div><br>
+            <div class="row">
+                <div class="col">
+                    <input type="datetime-local" name="fechaHora" class="form-control" placeholder="DateTime">
+                </div>
+                <div class="col">
+                    <input type="text" name="idUsuarioAsigno" class="form-control" placeholder="User Assigned">
+                </div>
+            </div>
+            <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <input type="submit" class="btn btn-primary" value="Ok">
+      </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div> <br> <br>
                     <div class="row">
                             <div class="col-lg-12">
                                 <div class="table-responsive">        
