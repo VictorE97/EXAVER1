@@ -107,7 +107,7 @@ $("#formPersonas").submit(function(e){
             idEquipo = data[0].idEquipo;
             idPerfil = data[0].idPerfil;
             if(opcion == 1){tablaPersonas.row.add([idusuarios_equipo,nombre,idEquipo,idPerfil]).draw();}
-            else{tablaPersonas.row(fila).data([id,nombre,idEquipo,idPerfil]).draw();}            
+            else{tablaPersonas.row(fila).data([idusuarios_equipo,nombre,idEquipo,idPerfil]).draw();}            
         }        
     });
     $("#modalCRUD").modal("hide");    
@@ -134,7 +134,7 @@ $("#formPerfil").submit(function(e){
             idEquipo = data[0].idEquipo;
             idPerfil = data[0].idPerfil;
             if(opcion == 1){tablaPersonas.row.add([idusuarios_perfiles,nombre,idEquipo,idPerfil]).draw();}
-            else{tablaPersonas.row(fila).data([id,nombre,idEquipo,idPerfil]).draw();}            
+            else{tablaPersonas.row(fila).data([idusuarios_perfiles,nombre,idEquipo,idPerfil]).draw();}            
         }        
     });
     $("#modalActualizarPerfil").modal("hide");    

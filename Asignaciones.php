@@ -135,12 +135,12 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                 <div class="container"> <br>
                 <!-- Button trigger modal -->
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalPerfil">
+<!--button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalPerfil">
   Register Profile
-</button>
+</button-->
 
 <!-- Modal -->
-<div class="modal fade" id="ModalEquipo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!--div class="modal fade" id="ModalEquipo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -182,10 +182,10 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
       </div>
     </div>
   </div>
-</div>
+</div-->
 
 <!-- Modal -->
-<div class="modal fade" id="ModalPerfil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!--div class="modal fade" id="ModalPerfil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -229,7 +229,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
       </div>
     </div>
   </div>
-</div> <br> <br>
+</div> <br> <br-->
                     <div class="row">
                             <div class="col-lg-12">
                                 <div class="table-responsive">        
@@ -343,6 +343,51 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
         </form>    
         </div>
     </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="ModalEquipo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Register Team</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="Agregar/Agregar_Equipo.php" method="POST">
+            <div class="row">
+                <div class="col">
+                    <input type="hidden" name="idUsuarioModalEquipo" id="idUsuarioModalEquipo" class="form-control" placeholder="User">
+                </div>
+                <div class="col">
+                <label for="idEquipo">Team</label>
+                        <select class="form-control" id="idEquipo" name="idEquipo">
+                            <option value="0">--Selecciona una opción---</option>  
+                            <option value="1">Exaver 1</option>
+                            <option value="2">Exaver 2</option>
+                            <option value="3">Exaver 3</option>
+                            <option value="4">Edicion</option>
+                            <option value="5">Coordinacion</option>
+                        </select>
+                </div>
+            </div><br>
+            <div class="row">
+                <div class="col">
+                </div>
+                <div class="col">
+                    <input type="hidden" name="idUsuarioAsigno" id="idUsuarioAsigno" class="form-control" placeholder="User Assigned" value="<?php echo $_SESSION['id']; ?>">
+                </div>
+            </div>
+            <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <input type="submit" class="btn btn-primary" value="Ok">
+      </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
 
                    
