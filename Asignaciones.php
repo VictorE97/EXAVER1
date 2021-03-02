@@ -345,7 +345,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
     </div>
 </div>
 
-<!-- Modal -->
+<!-- Modal para agregar equipo -->
 <div class="modal fade" id="ModalEquipo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -389,6 +389,53 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
     </div>
   </div>
 </div>
+
+<!-- Modal para agregar perfil -->
+<div class="modal fade" id="ModalPerfilAgregar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Register Team</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="Agregar/Agregar_Perfil.php" method="POST">
+            <div class="row">
+                <div class="col">
+                    <input type="hidden" name="idUsuarioModalPerfil" id="idUsuarioModalPerfil" class="form-control" placeholder="User">
+                </div>
+                <div class="col">
+                <label for="idPerfil">Team</label>
+                        <select class="form-control" id="idPerfil" name="idPerfil">
+                        <option value="0">--Selecciona una opción---</option>  
+                            <option value="1">TL</option>
+                            <option value="2">IW</option>
+                            <option value="3">P</option>
+                            <option value="4">ED</option>
+                            <option value="5">CO</option>
+                            <option value="6">D</option>
+                        </select>
+                </div>
+            </div><br>
+            <div class="row">
+                <div class="col">
+                </div>
+                <div class="col">
+                    <input type="hidden" name="idUsuarioAsigno" id="idUsuarioAsigno" class="form-control" placeholder="User Assigned" value="<?php echo $_SESSION['id']; ?>">
+                </div>
+            </div>
+            <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <input type="submit" class="btn btn-primary" value="Ok">
+      </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
 
                    
 

@@ -71,18 +71,27 @@ $(document).on("click", ".btnEditarPerfil", function(){
     fila = $(this).closest("tr");
     idusuarios_perfiles = parseInt(fila.find('td:eq(0)').text());
     nombre = fila.find('td:eq(1)').text();
-    idEquipo = parseInt(fila.find('td:eq(2)').text());
+    perfil = fila.find('td:eq(2)').text();
+    //idEquipo = parseInt(fila.find('td:eq(2)').text());
     idPerfil = parseInt(fila.find('td:eq(3)').text());
     
     $("#nombrePerfil").val(nombre);
-    $("#idEquipo").val(idEquipo); 
+    //$("#idEquipo").val(idEquipo); 
     $("#idPerfil").val(idPerfil);
     opcion = 3; //editar
     
     $(".modal-header").css("background-color", "#007bff");
     $(".modal-header").css("color", "white");
-    $(".modal-title").text("Update Profile");            
-    $("#modalActualizarPerfil").modal("show");  
+    if(perfil==""){
+        $("#idUsuarioModalPerfil").val(idusuarios_perfiles);
+        $(".modal-title").text("Register Profile");
+        alert($("#idUsuarioModalPerfil").val());
+        $("#ModalPerfilAgregar").modal("show");
+    }else{
+        $(".modal-title").text("Update Profile");            
+        $("#modalActualizarPerfil").modal("show");
+    }
+      
     
 });
 
@@ -117,24 +126,24 @@ $("#formPersonas").submit(function(e){
 $("#formPerfil").submit(function(e){
     e.preventDefault();    
     nombre = $.trim($("#nombre").val());
-    idEquipo = $.trim($("#idEquipo").val());
+    //idEquipo = $.trim($("#idEquipo").val());
     idPerfil = $.trim($("#idPerfil").val());
     alert(nombre);
-    alert(idEquipo);
+    //alert(idEquipo);
     alert(idPerfil);  
     $.ajax({
         url: "bd/crudAsignaciones.php",
         type: "POST",
         dataType: "json",
-        data: {nombre:nombre, idEquipo:idEquipo, idPerfil:idPerfil, idusuarios_perfiles:idusuarios_perfiles, opcion:opcion},
+        data: {nombre:nombre, idPerfil:idPerfil, idusuarios_perfiles:idusuarios_perfiles, opcion:opcion},
         success: function(data){  
             console.log(data);
             idusuarios_perfiles = data[0].idusuarios_perfiles;            
             nombre = data[0].nombre;
-            idEquipo = data[0].idEquipo;
+            //idEquipo = data[0].idEquipo;
             idPerfil = data[0].idPerfil;
-            if(opcion == 1){tablaPersonas.row.add([idusuarios_perfiles,nombre,idEquipo,idPerfil]).draw();}
-            else{tablaPersonas.row(fila).data([idusuarios_perfiles,nombre,idEquipo,idPerfil]).draw();}            
+            if(opcion == 1){tablaPersonas.row.add([idusuarios_perfiles,nombre,idPerfil]).draw();}
+            else{tablaPersonas.row(fila).data([idusuarios_perfiles,nombre,idPerfil]).draw();}            
         }        
     });
     $("#modalActualizarPerfil").modal("hide");    
