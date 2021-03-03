@@ -278,6 +278,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                 <div class="row">
                 <div class="col">
                     <input type="text" id="nombre" class="form-control" placeholder="Name" required>
+                    <input type="hidden" id="nombrePerfilE" class="form-control">
                 </div>
                 </div> <br>
 
@@ -318,6 +319,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                 <div class="row">
                 <div class="col">
                     <input type="text" id="nombrePerfil" class="form-control" placeholder="Name"  required>
+                    <input type="hidden" id="nombreEquipoP" class="form-control">
                 </div>
                 </div> <br>
 
@@ -405,6 +407,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
             <div class="row">
                 <div class="col">
                     <input type="hidden" name="idUsuarioModalPerfil" id="idUsuarioModalPerfil" class="form-control" placeholder="User">
+                    
                 </div>
                 <div class="col">
                 <label for="idPerfil">Team</label>
