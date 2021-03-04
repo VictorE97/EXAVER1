@@ -363,6 +363,12 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                 <div class="col">
                     <input type="hidden" name="idUsuarioModalEquipo" id="idUsuarioModalEquipo" class="form-control" placeholder="User">
                 </div>
+                </div>
+                <div class="col">
+                
+                </div>
+            
+            <div class="row">
                 <div class="col">
                 <label for="idEquipo">Team</label>
                         <select class="form-control" id="idEquipo" name="idEquipo">
@@ -373,10 +379,6 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                             <option value="4">Edicion</option>
                             <option value="5">Coordinacion</option>
                         </select>
-                </div>
-            </div><br>
-            <div class="row">
-                <div class="col">
                 </div>
                 <div class="col">
                     <input type="hidden" name="idUsuarioAsigno" id="idUsuarioAsigno" class="form-control" placeholder="User Assigned" value="<?php echo $_SESSION['id']; ?>">
@@ -406,11 +408,14 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
         <form action="Agregar/Agregar_Perfil.php" method="POST">
             <div class="row">
                 <div class="col">
-                    <input type="hidden" name="idUsuarioModalPerfil" id="idUsuarioModalPerfil" class="form-control" placeholder="User">
-                    
+                    <input type="hidden" name="idUsuarioModalPerfil" id="idUsuarioModalPerfil" class="form-control" placeholder="User">  
                 </div>
+            </div>
                 <div class="col">
-                <label for="idPerfil">Team</label>
+                </div>
+            <div class="row">
+                <div class="col">
+                <label for="idPerfil">Profile</label>
                         <select class="form-control" id="idPerfil" name="idPerfil">
                         <option value="0">--Selecciona una opción---</option>  
                             <option value="1">TL</option>
@@ -420,10 +425,6 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                             <option value="5">CO</option>
                             <option value="6">D</option>
                         </select>
-                </div>
-            </div><br>
-            <div class="row">
-                <div class="col">
                 </div>
                 <div class="col">
                     <input type="hidden" name="idUsuarioAsigno" id="idUsuarioAsigno" class="form-control" placeholder="User Assigned" value="<?php echo $_SESSION['id']; ?>">

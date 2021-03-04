@@ -13,6 +13,6 @@ function NuevoPerfil($idUsuario, $idPerfil, $idUsuarioAsigno){
 ?>
 
 <script type="text/javascript">
-	alert("New Team Created Correctly");
+	alert("New Profile Created Correctly");
 	window.location.href = '../Asignaciones.php';
 </script>

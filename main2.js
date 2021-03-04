@@ -55,7 +55,7 @@ $(document).on("click", ".btnEditarEquipo", function(){
     if(equipo==""){
         $("#idUsuarioModalEquipo").val(idusuarios_equipo);
         $(".modal-title").text("Register Team");
-        alert($("#idUsuarioModalEquipo").val());
+        //alert($("#idUsuarioModalEquipo").val());
         $("#ModalEquipo").modal("show");
     }else{
         $(".modal-title").text("Update Team");
@@ -84,7 +84,7 @@ $(document).on("click", ".btnEditarPerfil", function(){
     if(perfil==""){
         $("#idUsuarioModalPerfil").val(idusuarios_perfiles);
         $(".modal-title").text("Register Profile");
-        alert($("#idUsuarioModalPerfil").val());
+        //alert($("#idUsuarioModalPerfil").val());
         $("#ModalPerfilAgregar").modal("show");
     }else{
         $(".modal-title").text("Update Profile");            
@@ -129,15 +129,9 @@ $("#formPerfil").submit(function(e){
         dataType: "json",
         data: {nombre:nombre, idPerfil:idPerfil, idusuarios_perfiles:idusuarios_perfiles, opcion:opcion},
         success: function(data){  
-            console.log(data);
-            alert(idusuarios_perfiles);            
+            console.log(data);            
             nombre = $.trim($("#nombrePerfil").val());
-            alert(idEquipo);
-            //idPerfil = data[0].idPerfil;
             idPerfil = $.trim($("#idPerfil option:selected").text());
-            alert(idPerfil);
-            //if(opcion == 1){tablaPersonas.row.add([idusuarios_perfiles,nombre,idEquipo,idPerfil]).draw();}
-            //else{
                 tablaPersonas.row(fila).data([idusuarios_perfiles,nombre,idEquipo,idPerfil]).draw();//}            
         }        
     });
