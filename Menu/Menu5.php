@@ -55,3 +55,8 @@
                                     <a class="nav-link" href="Version.php">Version Examen</a>
                                 </nav>
                             </div>
+
+                            <a class="nav-link" href="indexTL.php">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                TL
+                            </a>
