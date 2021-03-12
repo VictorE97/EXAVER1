@@ -1,9 +1,24 @@
 <?php
+
+    session_start();
+
+    if(!isset($_SESSION['id'])){
+        header("Location: login.php");
+    }
+
+    $nombre = $_SESSION['nombre'];
+
+?>
+
+<?php
 include_once 'bd/conexion.php';
 $objeto = new Conexion();
 $conexion = $objeto->Conectar();
 
-$consulta = "SELECT partes.idParte, partes.nombre AS nombreParte, roles.idRol, roles.nombre AS nombreRol, usuarios.id, usuarios.nombre AS nombreUsuario, partes.paper 
+$consulta = "SELECT partes.idParte, partes.nombre AS nombreParte,
+t3.idRol, t3.nombre AS nombreRolEdita, t5.id, t5.nombre AS nombreUsuarioEdita,
+t4.idRol, t4.nombre AS nombreRolRevisa, t6.id, t6.nombre AS nombreUsuarioRevisa,
+partes.paper 
 FROM partes
 INNER JOIN examen_parte
 ON partes.idParte = examen_parte.idParte
@@ -17,13 +32,19 @@ INNER JOIN usuarios_equipo
 ON usuarios_equipo.idEquipo = equipo_version.idEquipo 
 INNER JOIN usuarios_perfiles
 ON usuarios_equipo.idUsuario = usuarios_perfiles.idUsuario
-LEFT JOIN usuarios_examen_parte
-ON usuarios_examen_parte.idexamen_parte = partes.idParte
-LEFT JOIN roles
-ON usuarios_examen_parte.rol = roles.idRol
-LEFT JOIN usuarios
-ON usuarios_examen_parte.idUsuario = usuarios.id
-WHERE usuarios_perfiles.idUsuario = '12' AND examenes.nivel = '3'";
+LEFT JOIN (select * from usuarios_examen_parte INNER JOIN partes ON usuarios_examen_parte.idexamen_parte = partes.idParte WHERE usuarios_examen_parte.rol = '1') AS t1
+ON t1.idexamen_parte = partes.idParte
+LEFT JOIN (select * from usuarios_examen_parte INNER JOIN partes ON usuarios_examen_parte.idexamen_parte = partes.idParte WHERE usuarios_examen_parte.rol = '2') AS t2
+ON t2.idexamen_parte = partes.idParte
+LEFT JOIN roles t3
+ON t1.rol = t3.idRol
+LEFT JOIN roles t4
+ON t2.rol = t4.idRol
+LEFT JOIN usuarios t5
+ON t1.idUsuario = t5.id
+LEFT JOIN usuarios t6
+ON t2.idUsuario = t6.id
+WHERE usuarios_perfiles.idUsuario = '12' AND examenes.nivel = '3' group by partes.idParte";
 $resultado = $conexion->prepare($consulta);
 $resultado->execute();
 $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
@@ -52,7 +73,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
             <!-- Navbar-->
             <ul class="navbar-nav ml-auto ml-md-0">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $nombre; ?><i class="fas fa-user fa-fw"></i></a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                         <a class="dropdown-item" href="#">Settings</a>
                         <a class="dropdown-item" href="#">Activity Log</a>
@@ -86,7 +107,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
 
                         <div class="row">
                             <div class="col-xl-3 col-md-6">
-                                <div class="card bg-primary text-white mb-4">
+                                <div class="card bg-primary text-white mb-4" style="width: 300px;">
                                     <div class="card-body">Marina Betancourt Cruz</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         <a class="small text-white stretched-link" href="#">View Details</a>
@@ -95,7 +116,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                                 </div>
                             </div>
                             <div class="col-xl-3 col-md-6">
-                                <div class="card bg-warning text-white mb-4">
+                                <div class="card bg-warning text-white mb-4" style="width: 300px; margin-left:112.5px;">
                                     <div class="card-body">Victoria Ellen Schlegel</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         <a class="small text-white stretched-link" href="#">View Details</a>
@@ -104,7 +125,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                                 </div>
                             </div>
                             <div class="col-xl-3 col-md-6">
-                                <div class="card bg-success text-white mb-4">
+                                <div class="card bg-success text-white mb-4" style="width: 300px; margin-left:225px;">
                                     <div class="card-body">Teresa de Jesús Romero Barradas</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         <a class="small text-white stretched-link" href="#">View Details</a>
@@ -125,22 +146,16 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                                             <tr>
                                                 <th>IdParte</th>
                                                 <th>NomParte</th>
-                                                <th>IdRol</th>
-                                                <th>NomRol</th>
-                                                <th>IdUsuario</th>
-                                                <th>NomUsuario</th>
-                                                <th>IdPaper</th>
+                                                <th>Elabora</th>
+                                                <th>Revisa</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
                                                 <th>IdParte</th>
                                                 <th>NomParte</th>
-                                                <th>IdRol</th>
-                                                <th>NomRol</th>
-                                                <th>IdUsuario</th>
-                                                <th>NomUsuario</th>
-                                                <th>IdPaper</th>
+                                                <th>Elabora</th>
+                                                <th>Revisa</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>
@@ -150,11 +165,20 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                                             <tr>
                                                 <td><?php echo $dat['idParte'] ?></td>
                                                 <td><?php echo $dat['nombreParte'] ?></td>
-                                                <td><?php echo $dat['idRol'] ?></td>
-                                                <td><?php echo $dat['nombreRol'] ?></td>
-                                                <td><?php echo $dat['id'] ?></td>
-                                                <td><?php echo $dat['nombreUsuario'] ?></td>
-                                                <td><?php echo $dat['paper'] ?></td>
+                                                <?php
+                                                    if(!is_null($dat['nombreUsuarioEdita'])){?>
+                                                        <td><?php echo $dat['nombreUsuarioEdita'] ?></td>
+                                                 <?php   }else{?>
+                                                 <td>boton</td>
+                                                 <?php }
+                                                ?>
+                                                <?php
+                                                    if(!is_null($dat['nombreUsuarioRevisa'])){?>
+                                                        <td><?php echo $dat['nombreUsuarioRevisa'] ?></td>
+                                                 <?php   }else{?>
+                                                 <td>boton</td>
+                                                 <?php }
+                                                ?>
                                             </tr>
                                             <?php
                                             }
