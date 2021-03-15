@@ -49,6 +49,11 @@ $resultado = $conexion->prepare($consulta);
 $resultado->execute();
 $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
 ?>
+
+<?php
+$conexion = mysqli_connect('localhost', 'root', '123456', 'bd_final');
+$query=mysqli_query($conexion,"SELECT * FROM bd_final.usuarios;");
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -134,6 +139,50 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                                 </div>
                             </div>
                         </div>
+                        <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="Agregar/UsuariosExamenParte.php" method="POST">
+            <div class="row">
+                <div class="col">
+                    <label for="idUsuario">User</label>
+                                    <select class="form-control" id="idUsuario" name="idUsuario">
+                                            <?php while($datos = mysqli_fetch_array($query))
+                                            {
+                                                ?>
+                                                <option value="<?php echo $datos['id']?>"><?php echo $datos['nombre']?></option>
+                                            <?php
+                                            }
+                                                ?>
+                                    
+                                    </select>
+                </div>
+                <input type="text" class="form-control" name="idexamen_parte" id="idexamen_parte" placeholder="Part">
+                <div class="col">
+                <label for="rol">Rol</label>
+                                    <select class="form-control" id="rol" name="rol">
+                                            <option value="1">Elaborador</option>
+                                            <option value="2">Revisor</option>
+                                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table mr-1"></i>
@@ -169,14 +218,18 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                                                     if(!is_null($dat['nombreUsuarioEdita'])){?>
                                                         <td><?php echo $dat['nombreUsuarioEdita'] ?></td>
                                                  <?php   }else{?>
-                                                 <td>boton</td>
+                                                 <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                                        Elabora
+                                                     </button></td>
                                                  <?php }
                                                 ?>
                                                 <?php
                                                     if(!is_null($dat['nombreUsuarioRevisa'])){?>
                                                         <td><?php echo $dat['nombreUsuarioRevisa'] ?></td>
                                                  <?php   }else{?>
-                                                 <td>boton</td>
+                                                 <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                                        Revisa
+                                                     </button></td>
                                                  <?php }
                                                 ?>
                                             </tr>
