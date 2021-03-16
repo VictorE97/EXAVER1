@@ -50,10 +50,7 @@ $resultado->execute();
 $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<?php
-$conexion = mysqli_connect('localhost', 'root', '123456', 'bd_final');
-$query=mysqli_query($conexion,"SELECT * FROM bd_final.usuarios;");
-?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -139,50 +136,7 @@ $query=mysqli_query($conexion,"SELECT * FROM bd_final.usuarios;");
                                 </div>
                             </div>
                         </div>
-                        <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form action="Agregar/UsuariosExamenParte.php" method="POST">
-            <div class="row">
-                <div class="col">
-                    <label for="idUsuario">User</label>
-                                    <select class="form-control" id="idUsuario" name="idUsuario">
-                                            <?php while($datos = mysqli_fetch_array($query))
-                                            {
-                                                ?>
-                                                <option value="<?php echo $datos['id']?>"><?php echo $datos['nombre']?></option>
-                                            <?php
-                                            }
-                                                ?>
-                                    
-                                    </select>
-                </div>
-                <input type="text" class="form-control" name="idexamen_parte" id="idexamen_parte" placeholder="Part">
-                <div class="col">
-                <label for="rol">Rol</label>
-                                    <select class="form-control" id="rol" name="rol">
-                                            <option value="1">Elaborador</option>
-                                            <option value="2">Revisor</option>
-                                    </select>
-                </div>
-            </div>
-            <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Save changes</button>
-      </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
+                        
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table mr-1"></i>
@@ -190,13 +144,14 @@ $query=mysqli_query($conexion,"SELECT * FROM bd_final.usuarios;");
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <table class="table table-bordered" id="tablaUsuarios_examen_parte" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
                                                 <th>IdParte</th>
                                                 <th>NomParte</th>
                                                 <th>Elabora</th>
                                                 <th>Revisa</th>
+                                                <th>Acciones</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
@@ -205,10 +160,12 @@ $query=mysqli_query($conexion,"SELECT * FROM bd_final.usuarios;");
                                                 <th>NomParte</th>
                                                 <th>Elabora</th>
                                                 <th>Revisa</th>
+                                                <th>Acciones</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>
-                                        <?php                            
+                                        <?php
+                                                            
                                         foreach($data as $dat) {                                                        
                                         ?>
                                             <tr>
@@ -218,29 +175,224 @@ $query=mysqli_query($conexion,"SELECT * FROM bd_final.usuarios;");
                                                     if(!is_null($dat['nombreUsuarioEdita'])){?>
                                                         <td><?php echo $dat['nombreUsuarioEdita'] ?></td>
                                                  <?php   }else{?>
-                                                 <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                                                        Elabora
-                                                     </button></td>
+                                                 <td></td>
                                                  <?php }
                                                 ?>
                                                 <?php
                                                     if(!is_null($dat['nombreUsuarioRevisa'])){?>
                                                         <td><?php echo $dat['nombreUsuarioRevisa'] ?></td>
                                                  <?php   }else{?>
-                                                 <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                                                        Revisa
-                                                     </button></td>
+                                                 <td></td>
                                                  <?php }
                                                 ?>
+                                                <td></td>
                                             </tr>
                                             <?php
                                             }
                                         ?>    
+                                        
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
+
+                        <div class="modal fade" id="modalCRUD" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <form id="formPersonas">    
+            <div class="modal-body">
+                <div class="row">
+                <div class="col">
+                    <input type="text" id="nombre" class="form-control" placeholder="Name" required>
+                    <input type="hidden" id="nombrePerfilE" class="form-control">
+                </div>
+                </div> <br>
+
+               <div class="row">
+                <div class="col">
+                    <label for="idEquipo">Team</label>
+                        <select class="form-control" id="idEquipo">
+                            <option value="0">--Selecciona una opción---</option>  
+                            <option value="1">Exaver 1</option>
+                            <option value="2">Exaver 2</option>
+                            <option value="3">Exaver 3</option>
+                            <option value="4">Edicion</option>
+                            <option value="5">Coordinacion</option>
+                        </select>
+                </div>
+            </div>           
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
+                <button type="submit" id="btnGuardar" class="btn btn-dark">Guardar</button>
+            </div>
+        </form>    
+        </div>
+    </div>
+</div>
+
+<!--Modal para Actualizar Perfil-->
+<div class="modal fade" id="modalActualizarPerfil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <form id="formPerfil">    
+            <div class="modal-body">
+                <div class="row">
+                <div class="col">
+                    <input type="text" id="nombrePerfil" class="form-control" placeholder="Name"  required>
+                    <input type="hidden" id="nombreEquipoP" class="form-control">
+                </div>
+                </div> <br>
+
+               <div class="row">
+                <div class="col">
+                    <label for="idPerfil">Profile</label>
+                        <select class="form-control" id="idPerfil">
+                            <option value="0">--Selecciona una opción---</option>  
+                            <option value="1">TL</option>
+                            <option value="2">IW</option>
+                            <option value="3">P</option>
+                            <option value="4">ED</option>
+                            <option value="5">CO</option>
+                            <option value="6">D</option>
+                        </select>
+                </div>
+            </div>           
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
+                <button type="submit" id="btnGuardar" class="btn btn-dark">Guardar</button>
+            </div>
+        </form>    
+        </div>
+    </div>
+</div>
+
+<!-- Modal para agregar quien elabora -->
+<div class="modal fade" id="ModalElabora" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Register Elaborates</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="Agregar/AgregarElaborador.php" method="POST">
+            <div class="row">
+                <div class="col">
+                <label for="idUsuario">Name User</label>
+                    <select class="form-control" name="idUsuario" id="idUsuario">
+                    <?php 
+                    $conexion = mysqli_connect('localhost', 'root', '123456', 'bd_final');
+                    $query=mysqli_query($conexion,"SELECT usuarios.id, usuarios.nombre AS nombreUsuarios, equipo.idEquipo, equipo.nombre AS nombreEquipo FROM usuarios_equipo 
+                    INNER JOIN equipo
+                    ON equipo.idEquipo = usuarios_equipo.idEquipo
+                    INNER JOIN usuarios
+                    ON usuarios.id = usuarios_equipo.idUsuario
+                    WHERE usuarios_equipo.idEquipo = '3';");
+                    while($datos = mysqli_fetch_array($query))
+                                            {
+                                                ?>
+                                                <option value="<?php echo $datos['id']?>"><?php echo $datos['nombreUsuarios']?></option>
+                                            <?php
+                                            }
+                                                ?>
+                    </select>
+                    <input type="hidden" name="idParteModalModalElaborador" id="idParteModalElaborador" class="form-control" placeholder="User"-->
+                </div>
+                <div class="col">
+                <label for="idexamen_parte">Exam/Part</label>
+                    <input type="text" name="idexamen_parte" class="form-control">
+                    <!--input type="hidden" name="idUsuarioAsigno" id="idUsuarioAsigno" class="form-control" placeholder="User Assigned" value="<!?php echo $_SESSION['id']; ?>"-->
+                </div>
+            </div> <br>
+            <div class="row">
+               <div class="col">
+               <label for="rol">Rol</label>
+                    <input type="text" class="form-control" name="rol">
+               </div>
+               <div class="col">
+               </div>
+            </div>
+            <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <input type="submit" class="btn btn-primary" value="Ok">
+      </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para agregar revisor -->
+<div class="modal fade" id="ModalRevisor" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Register Check out</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="Agregar/AgregarElaborador.php" method="POST">
+            <div class="row">
+                <div class="col"><label for="idUsuario">Name User</label>
+                    <select class="form-control" name="idUsuario" id="idUsuario">
+                    <?php
+                    $conexion = mysqli_connect('localhost', 'root', '123456', 'bd_final');
+                    $query=mysqli_query($conexion,"SELECT usuarios.id, usuarios.nombre AS nombreUsuarios, equipo.idEquipo, equipo.nombre AS nombreEquipo FROM usuarios_equipo 
+                    INNER JOIN equipo
+                    ON equipo.idEquipo = usuarios_equipo.idEquipo
+                    INNER JOIN usuarios
+                    ON usuarios.id = usuarios_equipo.idUsuario
+                    WHERE usuarios_equipo.idEquipo = '3';"); 
+                    while($datos = mysqli_fetch_array($query))
+                                            {
+                                                ?>
+                                                <option value="<?php echo $datos['id']?>"><?php echo $datos['nombreUsuarios']?></option>
+                                            <?php
+                                            }
+                                                ?>
+                    </select>
+                    <input type="hidden" name="idUsuarioModalPerfil" id="idUsuarioModalPerfil" class="form-control" placeholder="User">  
+                </div>
+                <div class="col">
+                <label for="idexamen_parte">Exam/Part</label>
+                    <input type="text" name="idexamen_parte" class="form-control">
+                </div>
+            </div> <br>
+            <div class="row">
+                <div class="col">
+                <label for="rol">Rol</label>
+                    <input type="text" class="form-control" name="rol">
+                    <!--input type="hidden" name="idUsuarioAsigno" id="idUsuarioAsigno" class="form-control" placeholder="User Assigned" value="<!?php echo $_SESSION['id']; ?>"-->
+                </div>
+                <div class="col">
+                </div>
+            </div>
+            <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <input type="submit" class="btn btn-primary" value="Ok">
+      </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
                     </div>
                 </main>
@@ -267,6 +419,6 @@ $query=mysqli_query($conexion,"SELECT * FROM bd_final.usuarios;");
         <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
         <script src="assets/demo/datatables-demo.js"></script>
-        <script type="text/javascript" src="main3.js"></script>
+        <script type="text/javascript" src="main4.js"></script>
     </body>
 </html>
