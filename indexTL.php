@@ -311,18 +311,16 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                                             }
                                                 ?>
                     </select>
-                    <input type="hidden" name="idParteModalModalElaborador" id="idParteModalElaborador" class="form-control" placeholder="User"-->
+                    <!--input type="text" name="idParteModalModalElaborador" id="idParteModalElaborador" class="form-control" placeholder="User"-->
                 </div>
                 <div class="col">
-                <label for="idexamen_parte">Exam/Part</label>
-                    <input type="text" name="idexamen_parte" class="form-control">
+                    <input type="hidden" name="idexamen_parteModal" id="idexamen_parteModal" class="form-control">
                     <!--input type="hidden" name="idUsuarioAsigno" id="idUsuarioAsigno" class="form-control" placeholder="User Assigned" value="<!?php echo $_SESSION['id']; ?>"-->
                 </div>
             </div> <br>
             <div class="row">
                <div class="col">
-               <label for="rol">Rol</label>
-                    <input type="text" class="form-control" name="rol">
+                    <input type="hidden" class="form-control" name="rol" value="1">
                </div>
                <div class="col">
                </div>
@@ -348,7 +346,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
         </button>
       </div>
       <div class="modal-body">
-        <form action="Agregar/AgregarElaborador.php" method="POST">
+        <form action="Agregar/AgregarRevisor.php" method="POST">
             <div class="row">
                 <div class="col"><label for="idUsuario">Name User</label>
                     <select class="form-control" name="idUsuario" id="idUsuario">
@@ -368,17 +366,15 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                                             }
                                                 ?>
                     </select>
-                    <input type="hidden" name="idUsuarioModalPerfil" id="idUsuarioModalPerfil" class="form-control" placeholder="User">  
+                    <!--input type="hidden" name="idUsuarioModalPerfil" id="idUsuarioModalPerfil" class="form-control" placeholder="User"-->  
                 </div>
                 <div class="col">
-                <label for="idexamen_parte">Exam/Part</label>
-                    <input type="text" name="idexamen_parte" class="form-control">
+                    <input type="hidden" name="idexamen_parteModalRevisor" id="idexamen_parteModalRevisor" class="form-control">
                 </div>
             </div> <br>
             <div class="row">
                 <div class="col">
-                <label for="rol">Rol</label>
-                    <input type="text" class="form-control" name="rol">
+                    <input type="hidden" class="form-control" name="rol" value="2">
                     <!--input type="hidden" name="idUsuarioAsigno" id="idUsuarioAsigno" class="form-control" placeholder="User Assigned" value="<!?php echo $_SESSION['id']; ?>"-->
                 </div>
                 <div class="col">

@@ -39,7 +39,7 @@ var fila; //capturar la fila para editar o borrar el registro
 //botón EDITAR Elaborador    
 $(document).on("click", ".btnEditarElaborador", function(){
     fila = $(this).closest("tr");
-    idParte = parseInt(fila.find('td:eq(0)').text());
+    idexamen_parte = parseInt(fila.find('td:eq(0)').text());
     nombre = fila.find('td:eq(1)').text();
     equipo = fila.find('td:eq(2)').text();
     idEquipo = parseInt(fila.find('td:eq(2)').text());
@@ -53,7 +53,7 @@ $(document).on("click", ".btnEditarElaborador", function(){
     $(".modal-header").css("background-color", "#007bff");
     $(".modal-header").css("color", "white");
     if(equipo==""){
-        $("#idParteModalElaborador").val(idParte);
+        $("#idexamen_parteModal").val(idexamen_parte);
         $(".modal-title").text("Register Elaborates");
         //alert($("#idUsuarioModalEquipo").val());
         $("#ModalElabora").modal("show");
@@ -69,7 +69,7 @@ $(document).on("click", ".btnEditarElaborador", function(){
 //botón EDITAR Revisor   
 $(document).on("click", ".btnEditarRevisor", function(){
     fila = $(this).closest("tr");
-    idusuarios_perfiles = parseInt(fila.find('td:eq(0)').text());
+    idexamen_parte = parseInt(fila.find('td:eq(0)').text());
     nombre = fila.find('td:eq(1)').text();
     perfil = fila.find('td:eq(3)').text();
     idEquipo = (fila.find('td:eq(2)').text());
@@ -82,7 +82,7 @@ $(document).on("click", ".btnEditarRevisor", function(){
     $(".modal-header").css("background-color", "#007bff");
     $(".modal-header").css("color", "white");
     if(perfil==""){
-        $("#idUsuarioModalPerfil").val(idusuarios_perfiles);
+        $("#idexamen_parteModalRevisor").val(idexamen_parte);
         $(".modal-title").text("Register Check out");
         //alert($("#idUsuarioModalPerfil").val());
         $("#ModalRevisor").modal("show");

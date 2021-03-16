@@ -1,8 +1,8 @@
 <?php
 
-NuevoElaborador($_POST['idUsuario'], $_POST['idexamen_parteModal'], $_POST['rol']);
+NuevoRevisor($_POST['idUsuario'], $_POST['idexamen_parteModalRevisor'], $_POST['rol']);
 
-function NuevoElaborador($idUsuario, $idexamen_parte, $rol){
+function NuevoRevisor($idUsuario, $idexamen_parte, $rol){
 	$fecha = date("Y-m-d h:i:s");
 	$conexion = mysqli_connect('localhost', 'root', '123456', 'bd_final');
 	$sentencia = "INSERT INTO usuarios_examen_parte (idUsuario, idexamen_parte, rol, fecha) VALUES ('".$idUsuario."','".$idexamen_parte."','".$rol."','".$fecha."')";
