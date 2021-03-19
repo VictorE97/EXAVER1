@@ -18,7 +18,7 @@ $conexion = $objeto->Conectar();
 $consulta = "SELECT partes.idParte, partes.nombre AS nombreParte,
 t3.idRol, t3.nombre AS nombreRolEdita, t5.id, t5.nombre AS nombreUsuarioEdita,
 t4.idRol, t4.nombre AS nombreRolRevisa, t6.id, t6.nombre AS nombreUsuarioRevisa,
-partes.paper 
+partes.paper, t1.idusuarios_examen_parte AS idElabora, t2.idusuarios_examen_parte AS idRevisa 
 FROM partes
 INNER JOIN examen_parte
 ON partes.idParte = examen_parte.idParte
@@ -173,14 +173,14 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                                                 <td><?php echo $dat['nombreParte'] ?></td>
                                                 <?php
                                                     if(!is_null($dat['nombreUsuarioEdita'])){?>
-                                                        <td><?php echo $dat['nombreUsuarioEdita'] ?></td>
+                                                        <td><input type="hidden" value="<?php echo $dat['idElabora'] ?>"><?php echo $dat['nombreUsuarioEdita'] ?></td>
                                                  <?php   }else{?>
                                                  <td></td>
                                                  <?php }
                                                 ?>
                                                 <?php
                                                     if(!is_null($dat['nombreUsuarioRevisa'])){?>
-                                                        <td><?php echo $dat['nombreUsuarioRevisa'] ?></td>
+                                                        <td><input type="hidden" value="<?php echo $dat['idRevisa'] ?>"><?php echo $dat['nombreUsuarioRevisa'] ?></td>
                                                  <?php   }else{?>
                                                  <td></td>
                                                  <?php }
@@ -205,26 +205,35 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
                 </button>
             </div>
-        <form id="formPersonas">    
+        <form id="formElaborador">    
             <div class="modal-body">
                 <div class="row">
                 <div class="col">
                     <input type="text" id="nombre" class="form-control" placeholder="Name" required>
-                    <input type="hidden" id="nombrePerfilE" class="form-control">
+                    <!--input type="hidden" id="nombrePerfilE" class="form-control"-->
                 </div>
                 </div> <br>
 
                <div class="row">
                 <div class="col">
-                    <label for="idEquipo">Team</label>
-                        <select class="form-control" id="idEquipo">
-                            <option value="0">--Selecciona una opción---</option>  
-                            <option value="1">Exaver 1</option>
-                            <option value="2">Exaver 2</option>
-                            <option value="3">Exaver 3</option>
-                            <option value="4">Edicion</option>
-                            <option value="5">Coordinacion</option>
-                        </select>
+                <label for="idUsuario">Name User</label>
+                    <select class="form-control" name="idUsuario" id="idUsuario">
+                    <?php 
+                    $conexion = mysqli_connect('localhost', 'root', '123456', 'bd_final');
+                    $query=mysqli_query($conexion,"SELECT usuarios.id, usuarios.nombre AS nombreUsuarios, equipo.idEquipo, equipo.nombre AS nombreEquipo FROM usuarios_equipo 
+                    INNER JOIN equipo
+                    ON equipo.idEquipo = usuarios_equipo.idEquipo
+                    INNER JOIN usuarios
+                    ON usuarios.id = usuarios_equipo.idUsuario
+                    WHERE usuarios_equipo.idEquipo = '3';");
+                    while($datos = mysqli_fetch_array($query))
+                                            {
+                                                ?>
+                                                <option value="<?php echo $datos['id']?>"><?php echo $datos['nombreUsuarios']?></option>
+                                            <?php
+                                            }
+                                                ?>
+                    </select>
                 </div>
             </div>           
             </div>

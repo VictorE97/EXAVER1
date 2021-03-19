@@ -1,3 +1,15 @@
+<?php
+
+    $nombreUsuario = $_SESSION['nombreUsuario'];
+    $nombreEquipo = $_SESSION['nombreEquipo'];
+    $nombrePerfil = $_SESSION['nombrePerfil'];
+
+?>
+<?php
+if($nombrePerfil == "CO"){
+?>
+
+
 <div class="sb-sidenav-menu-heading">Gestion</div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
@@ -55,8 +67,13 @@
                                     <a class="nav-link" href="Version.php">Version Examen</a>
                                 </nav>
                             </div>
-
+                            <?php } ?>
+                            <?php
+                            if($nombrePerfil == "TL"){
+                            ?>
                             <a class="nav-link" href="indexTL.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 TL
                             </a>
+                            <?php } ?>
+                            

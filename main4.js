@@ -41,18 +41,20 @@ $(document).on("click", ".btnEditarElaborador", function(){
     fila = $(this).closest("tr");
     idexamen_parte = parseInt(fila.find('td:eq(0)').text());
     nombre = fila.find('td:eq(1)').text();
-    equipo = fila.find('td:eq(2)').text();
-    idEquipo = parseInt(fila.find('td:eq(2)').text());
-    idPerfil = (fila.find('td:eq(3)').text());
+    usuario = fila.find('td:eq(2)').text();
+    idUsuario = fila.find('td:eq(2)').text();
+    //equipo = fila.find('td:eq(2)').text();
+    //idEquipo = parseInt(fila.find('td:eq(2)').text());
+    //idPerfil = (fila.find('td:eq(3)').text());
     
     $("#nombre").val(nombre);
-    $("#idEquipo").val(idEquipo);
-    $("#nombrePerfilE").val(idPerfil);
+    $("#nombreUsuarioEdita").val(idUsuario);
+    //$("#nombrePerfilE").val(idPerfil);
     opcion = 2; //editar
     
     $(".modal-header").css("background-color", "#007bff");
     $(".modal-header").css("color", "white");
-    if(equipo==""){
+    if(usuario==""){
         $("#idexamen_parteModal").val(idexamen_parte);
         $(".modal-title").text("Register Elaborates");
         //alert($("#idUsuarioModalEquipo").val());
@@ -95,23 +97,25 @@ $(document).on("click", ".btnEditarRevisor", function(){
 });
 
     
-$("#formPersonas").submit(function(e){
+$("#formElaborador").submit(function(e){
     e.preventDefault();    
     nombre = $.trim($("#nombre").val());
-    idEquipo = $.trim($("#idEquipo").val());
-    idPerfil = $.trim($("#nombrePerfilE").val()); 
+    idUsuario = $.trim($("#idUsuario").val());
+    alert(idUsuario);
+    //idPerfil = $.trim($("#nombrePerfilE").val()); 
     $.ajax({
-        url: "bd/crudAsignaciones.php",
+        url: "bd/ActualizarElaboradorRevisor.php",
         type: "POST",
         dataType: "json",
-        data: {nombre:nombre, idEquipo:idEquipo, idPerfil:idPerfil, idusuarios_equipo:idusuarios_equipo, opcion:opcion},
+        data: {nombre:nombre, idUsuario:idUsuario, idexamen_parte:idexamen_parte, opcion:opcion},
         success: function(data){  
             console.log(data);
             nombre = $.trim($("#nombre").val());
-            idEquipo = $.trim($("#idEquipo option:selected").text().toUpperCase());
-            idPerfil = $.trim($("#nombrePerfilE").val());
-            if(opcion == 1){tablaPersonas.row.add([idusuarios_equipo,nombre,idEquipo,idPerfil]).draw();}
-            else{tablaPersonas.row(fila).data([idusuarios_equipo,nombre,idEquipo,idPerfil]).draw();}            
+            idUsuario = $.trim($("#idUsuario").val());
+            alert(idUsuario);
+            //idPerfil = $.trim($("#nombrePerfilE").val());
+            if(opcion == 1){tablaUsuarios_examen_parte.row.add([idexamen_equipo,nombre,idUsuario]).draw();}
+            else{tablaUsuarios_examen_parte.row(fila).data([idexamen_equipo,nombre,idUsuario]).draw();}            
         }        
     });
     $("#modalCRUD").modal("hide");    
