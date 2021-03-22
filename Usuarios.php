@@ -6,7 +6,7 @@
         header("Location: login.php");
     }
 
-    $nombre = $_SESSION['nombre'];
+    $nombre = $_SESSION['nombreUsuario'];
     //$tipo_equipo = $_SESSION['idEquipo'];
     //$tipo_perfil = $_SESSION['idPerfil'];
 

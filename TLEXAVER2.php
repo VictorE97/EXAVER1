@@ -44,7 +44,7 @@ LEFT JOIN usuarios t5
 ON t1.idUsuario = t5.id
 LEFT JOIN usuarios t6
 ON t2.idUsuario = t6.id
-WHERE usuarios_perfiles.idUsuario = '12' AND examenes.nivel = '3' group by partes.idParte";
+WHERE usuarios_perfiles.idUsuario = '16' AND examenes.nivel = '2' group by partes.idParte";
 $resultado = $conexion->prepare($consulta);
 $resultado->execute();
 $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
@@ -110,7 +110,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                         <div class="row">
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-primary text-white mb-4" style="width: 300px;">
-                                    <div class="card-body">Marina Betancourt Cruz</div>
+                                    <div class="card-body">Nathan Andrew Schroeder</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         <a class="small text-white stretched-link" href="#">View Details</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
@@ -119,7 +119,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                             </div>
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-warning text-white mb-4" style="width: 300px; margin-left:112.5px;">
-                                    <div class="card-body">Victoria Ellen Schlegel</div>
+                                    <div class="card-body">Jorge Aguilar Sánchez</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         <a class="small text-white stretched-link" href="#">View Details</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
@@ -128,7 +128,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                             </div>
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-success text-white mb-4" style="width: 300px; margin-left:225px;">
-                                    <div class="card-body">Teresa de Jesús Romero Barradas</div>
+                                    <div class="card-body">Mónica Linda Antonieta Vidal Moreno</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         <a class="small text-white stretched-link" href="#">View Details</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
@@ -225,7 +225,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                     ON equipo.idEquipo = usuarios_equipo.idEquipo
                     INNER JOIN usuarios
                     ON usuarios.id = usuarios_equipo.idUsuario
-                    WHERE usuarios_equipo.idEquipo = '3';");
+                    WHERE usuarios_equipo.idEquipo = '2';");
                     while($datos = mysqli_fetch_array($query))
                                             {
                                                 ?>
@@ -311,7 +311,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                     ON equipo.idEquipo = usuarios_equipo.idEquipo
                     INNER JOIN usuarios
                     ON usuarios.id = usuarios_equipo.idUsuario
-                    WHERE usuarios_equipo.idEquipo = '3';");
+                    WHERE usuarios_equipo.idEquipo = '2';");
                     while($datos = mysqli_fetch_array($query))
                                             {
                                                 ?>
@@ -366,7 +366,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                     ON equipo.idEquipo = usuarios_equipo.idEquipo
                     INNER JOIN usuarios
                     ON usuarios.id = usuarios_equipo.idUsuario
-                    WHERE usuarios_equipo.idEquipo = '3';"); 
+                    WHERE usuarios_equipo.idEquipo = '2';"); 
                     while($datos = mysqli_fetch_array($query))
                                             {
                                                 ?>
