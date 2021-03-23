@@ -9,7 +9,7 @@
         $usuario = $_POST['usuario'];
         $password = $_POST['password'];
         
-        $sql = "SELECT id, usuarios.nombre AS nombreUsuario, usuarios.usuario, usuarios.password, equipo.nombre AS nombreEquipo, perfil.nombre AS nombrePerfil, equipo.idEquipo, perfil.idPerfil
+        $sql = "SELECT id, usuarios.nombre AS nombreUsuario, usuarios.usuario, usuarios.password, equipo.nombre AS nombreEquipo, perfil.nombre AS nombrePerfil, equipo.idEquipo, perfil.idPerfil, equipo_version.nivel AS nombreNivel
         FROM usuarios
         LEFT JOIN usuarios_equipo
         ON usuarios.id = usuarios_equipo.idUsuario
@@ -18,7 +18,10 @@
         LEFT JOIN usuarios_perfiles
         ON usuarios.id = usuarios_perfiles.idUsuario
         LEFT JOIN perfil
-        ON perfil.idPerfil = usuarios_perfiles.idPerfil WHERE usuario = '$usuario'";
+        ON perfil.idPerfil = usuarios_perfiles.idPerfil
+        LEFT JOIN equipo_version
+        ON equipo.idEquipo = equipo_version.idEquipo
+        WHERE usuario = '$usuario'";
         $resultado = $mysqli->query($sql);
         $num = $resultado->num_rows;
         
@@ -33,6 +36,7 @@
                 $_SESSION['nombreUsuario'] = $row['nombreUsuario'];
                 $_SESSION['nombreEquipo'] = $row['nombreEquipo'];
                 $_SESSION['nombrePerfil'] = $row['nombrePerfil'];
+                $_SESSION['nombreNivel'] = $row['nombreNivel'];
                 
                 header("Location: index.php");
                 

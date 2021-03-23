@@ -7,6 +7,8 @@
     }
 
     $nombre = $_SESSION['nombreUsuario'];
+    $idUsuario = $_SESSION['id'];
+
 
 ?>
 
@@ -44,7 +46,7 @@ LEFT JOIN usuarios t5
 ON t1.idUsuario = t5.id
 LEFT JOIN usuarios t6
 ON t2.idUsuario = t6.id
-WHERE usuarios_perfiles.idUsuario = '15' AND examenes.nivel = '1' group by partes.idParte";
+WHERE usuarios_perfiles.idUsuario = '".$idUsuario."' AND examenes.nivel = partes.nivel group by partes.idParte";
 $resultado = $conexion->prepare($consulta);
 $resultado->execute();
 $data=$resultado->fetchAll(PDO::FETCH_ASSOC);

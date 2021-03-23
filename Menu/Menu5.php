@@ -80,7 +80,7 @@ if($nombrePerfil == "CO"){
                             <?php
                             if($nombrePerfil == "TL" && $nombreEquipo == "EXAVER 1"){
                             ?>
-                            <a class="nav-link" href="TLEXAVER1.php">
+                            <a class="nav-link" href="indexTL.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 TL EXAVER 1
                             </a>
@@ -89,7 +89,7 @@ if($nombrePerfil == "CO"){
                             <?php
                             if($nombrePerfil == "TL" && $nombreEquipo == "EXAVER 2"){
                             ?>
-                            <a class="nav-link" href="TLEXAVER2.php">
+                            <a class="nav-link" href="indexTL.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 TL EXAVER 2
                             </a>
