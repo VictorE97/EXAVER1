@@ -73,17 +73,15 @@ $(document).on("click", ".btnEditarRevisor", function(){
     fila = $(this).closest("tr");
     idexamen_parte = parseInt(fila.find('td:eq(0)').text());
     nombre = fila.find('td:eq(1)').text();
-    perfil = fila.find('td:eq(3)').text();
-    idEquipo = (fila.find('td:eq(2)').text());
-    idPerfil = parseInt(fila.find('td:eq(3)').text());
-    $("#nombrePerfil").val(nombre);
-    $("#nombreEquipoP").val(idEquipo); 
-    $("#idPerfil").val(idPerfil);
-    opcion = 3; //editar
+    revisa = fila.find('td:eq(3)').text();
+    //idEquipo = (fila.find('td:eq(2)').text());
+    //idPerfil = parseInt(fila.find('td:eq(3)').text());
+    $("#nombreRevisa").val(nombre);
+    opcion = 2; //editar
     
     $(".modal-header").css("background-color", "#007bff");
     $(".modal-header").css("color", "white");
-    if(perfil==""){
+    if(revisa==""){
         $("#idexamen_parteModalRevisor").val(idexamen_parte);
         $(".modal-title").text("Register Check out");
         //alert($("#idUsuarioModalPerfil").val());
@@ -133,9 +131,47 @@ $("#formElaborador").submit(function(e){
     $("#modalCRUD").modal("hide"); 
       
     
-}); 
+});
 
-$("#formPerfil").submit(function(e){
+$("#formRevisor").submit(function(e){
+    e.preventDefault();    
+    nombre = $.trim($("#nombre").val());
+    //alert(nombre);
+    //idUsuario = $.trim($("#idUsuario").val());
+    idUsuario = $('select[name=idUsuarioActualizaRevisa]').val();
+    //alert(idUsuario);
+    //alert(idexamen_parte);
+    //alert(opcion);
+    //idPerfil = $.trim($("#nombrePerfilE").val()); 
+    $.ajax({
+        cache: false,
+        url: "bd/ActualizaRevisor.php",
+        type: "POST",
+        dataType: "json",
+        data: {nombre:nombre, idUsuario:idUsuario, idusuarios_examen_parte:idexamen_parte, opcion:opcion},
+        success: function(data){
+            //alert(JSON.stringify(data, '', 2));  
+            console.log(data);
+            nombre = $.trim($("#nombre").val());
+            idUsuario = $.trim($("#idUsuario").val());
+            location.reload();
+            //alert(idUsuario);
+            //idPerfil = $.trim($("#nombrePerfilE").val());
+            if(opcion == 1){tablaUsuarios_examen_parte.row.add([idexamen_equipo,nombre,idUsuario]).draw();}
+            else{tablaUsuarios_examen_parte.row(fila).data([idexamen_equipo,nombre,idUsuario]).draw();}            
+        },
+        error: function(exception) {
+            alert('Exception:'+exception);
+            alert(JSON.stringify(exception, '', 2));
+        }        
+    });
+     
+    $("#modalActualizarPerfil").modal("hide"); 
+      
+    
+});
+
+/*$("#formRevisor").submit(function(e){
     e.preventDefault();    
     nombre = $.trim($("#nombrePerfil").val());
     idEquipo = $.trim($("#nombreEquipoP").val());
@@ -154,7 +190,7 @@ $("#formPerfil").submit(function(e){
     });
     $("#modalActualizarPerfil").modal("hide");    
     
-});
+});*/
 
 
     

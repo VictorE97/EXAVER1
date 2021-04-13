@@ -133,7 +133,6 @@ echo ($idUsuario);
                                             <tr>
                                                 <th>IdParte</th>
                                                 <th>NomParte</th>
-                                                <th></th>
                                                 <th>Elabora</th>
                                                 <th>Revisa</th>
                                                 <th>Acciones</th>
@@ -143,7 +142,6 @@ echo ($idUsuario);
                                             <tr>
                                                 <th>IdParte</th>
                                                 <th>NomParte</th>
-                                                <th></th>
                                                 <th>Elabora</th>
                                                 <th>Revisa</th>
                                                 <th>Acciones</th>
@@ -157,7 +155,6 @@ echo ($idUsuario);
                                             <tr>
                                                 <td><?php echo $dat['idParte'] ?></td>
                                                 <td><?php echo $dat['nombreParte'] ?></td>
-                                                <td><?php echo $dat['idElabora'] ?></td>
                                                 <?php
                                                     if(!is_null($dat['nombreUsuarioEdita'])){?>
                                                         <td><input type="hidden" value="<?php echo $dat['idElabora'] ?>"><?php echo $dat['nombreUsuarioEdita'] ?></td>
@@ -184,34 +181,7 @@ echo ($idUsuario);
                             </div>
                         </div>
 
-                        <!--Modal para CRUD-->
-<div class="modal fade" id="modalCRUDusuarios_examen_parte" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"></h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        <form id="formPersonas">    
-            <div class="modal-body">
-                <div class="form-group">
-                <label for="idUsuario" class="col-form-label">IdUsuario:</label>
-                <input type="text" class="form-control" id="idUsuario">
-                </div>              
-                <div class="form-group">
-                <label for="edad" class="col-form-label">Nombre:</label>
-                <input type="text" class="form-control" id="nombreUsuario">
-                </div>            
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
-                <button type="submit" id="btnGuardar" class="btn btn-dark">Guardar</button>
-            </div>
-        </form>    
-        </div>
-    </div>
-</div> 
+                        
 
                         <div class="modal fade" id="modalCRUD" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -271,16 +241,38 @@ echo ($idUsuario);
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
                 </button>
             </div>
-        <form id="formPerfil">    
+        <form id="formRevisor">    
             <div class="modal-body">
                 <div class="row">
                 <div class="col">
-                    <input type="text" id="nombrePerfil" class="form-control" placeholder="Name"  required>
-                    <input type="hidden" id="nombreEquipoP" class="form-control">
+                    <input type="text" id="nombreRevisa" class="form-control" placeholder="Name"  required>
+                    <!-- type="hidden" id="nombreEquipoP" class="form-control"-->
                 </div>
                 </div> <br>
-
-               <div class="row">
+                
+                <div class="row">
+                <div class="col">
+                <label for="idUsuario">Name User</label>
+                    <select class="form-control" name="idUsuarioActualizaRevisa" id="idUsuarioActualizaRevisa">
+                    <?php 
+                    $conexion = mysqli_connect('localhost', 'root', '123456', 'bd_final');
+                    $query=mysqli_query($conexion,"SELECT usuarios.id, usuarios.nombre AS nombreUsuarios, equipo.idEquipo, equipo.nombre AS nombreEquipo FROM usuarios_equipo 
+                    INNER JOIN equipo
+                    ON equipo.idEquipo = usuarios_equipo.idEquipo
+                    INNER JOIN usuarios
+                    ON usuarios.id = usuarios_equipo.idUsuario
+                    WHERE usuarios_equipo.idEquipo = '".$nombreNivel."'");
+                    while($datos = mysqli_fetch_array($query))
+                                            {
+                                                ?>
+                                                <option value="<?php echo $datos['id']?>"><?php echo $datos['nombreUsuarios']?></option>
+                                            <?php
+                                            }
+                                                ?>
+                    </select>
+                </div>
+            </div> 
+               <!--div class="row">
                 <div class="col">
                     <label for="idPerfil">Profile</label>
                         <select class="form-control" id="idPerfil">
@@ -293,7 +285,7 @@ echo ($idUsuario);
                             <option value="6">D</option>
                         </select>
                 </div>
-            </div>           
+            </div-->           
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
