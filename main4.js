@@ -3,7 +3,7 @@ $(document).ready(function(){
        "columnDefs":[{
         "targets": -1,
         "data":null,
-        "defaultContent": "<div class='text-center'><div class='btn-group'><button title='Update Team' class='btn btn-primary btnEditarElaborador'>Elaborates</button><button class='btn btn-success btnEditarRevisor'>Check out</button></div></div>"  
+        "defaultContent": "<div class='text-center'><div class='btn-group'><button title='Update Team' class='btn btn-primary btnEditarElaborador' style='margin-right: 5px;'>IW</button><button class='btn btn-success btnEditarRevisor'>PC</button></div></div>"  
        }],
         
         //Para cambiar el lenguaje a español
@@ -99,28 +99,41 @@ $(document).on("click", ".btnEditarRevisor", function(){
     
 $("#formElaborador").submit(function(e){
     e.preventDefault();    
-    nombre = $.trim($("#nombre").val());
-    idUsuario = $.trim($("#idUsuario").val());
-    alert(idUsuario);
+    nombre2 = $.trim($("#nombre").val());
+    //alert(nombre);
+    //idUsuario = $.trim($("#idUsuario").val());
+    idUsuario2 = $('select[name=idUsuarioActualiza]').val();
+    //alert(idUsuario);
+    //alert(idexamen_parte);
+    //alert(opcion);
     //idPerfil = $.trim($("#nombrePerfilE").val()); 
     $.ajax({
+        cache: false,
         url: "bd/ActualizarElaboradorRevisor.php",
         type: "POST",
         dataType: "json",
-        data: {nombre:nombre, idUsuario:idUsuario, idexamen_parte:idexamen_parte, opcion:opcion},
-        success: function(data){  
+        data: {nombre:nombre2, idUsuario:idUsuario2, idusuarios_examen_parte:idexamen_parte, opcion:opcion},
+        success: function(data){
+            //alert(JSON.stringify(data, '', 2));  
             console.log(data);
             nombre = $.trim($("#nombre").val());
             idUsuario = $.trim($("#idUsuario").val());
-            alert(idUsuario);
+            location.reload();
+            //alert(idUsuario);
             //idPerfil = $.trim($("#nombrePerfilE").val());
             if(opcion == 1){tablaUsuarios_examen_parte.row.add([idexamen_equipo,nombre,idUsuario]).draw();}
             else{tablaUsuarios_examen_parte.row(fila).data([idexamen_equipo,nombre,idUsuario]).draw();}            
+        },
+        error: function(exception) {
+            alert('Exception:'+exception);
+            alert(JSON.stringify(exception, '', 2));
         }        
     });
-    $("#modalCRUD").modal("hide");    
+     
+    $("#modalCRUD").modal("hide"); 
+      
     
-});
+}); 
 
 $("#formPerfil").submit(function(e){
     e.preventDefault();    

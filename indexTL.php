@@ -133,6 +133,7 @@ echo ($idUsuario);
                                             <tr>
                                                 <th>IdParte</th>
                                                 <th>NomParte</th>
+                                                <th></th>
                                                 <th>Elabora</th>
                                                 <th>Revisa</th>
                                                 <th>Acciones</th>
@@ -142,6 +143,7 @@ echo ($idUsuario);
                                             <tr>
                                                 <th>IdParte</th>
                                                 <th>NomParte</th>
+                                                <th></th>
                                                 <th>Elabora</th>
                                                 <th>Revisa</th>
                                                 <th>Acciones</th>
@@ -155,6 +157,7 @@ echo ($idUsuario);
                                             <tr>
                                                 <td><?php echo $dat['idParte'] ?></td>
                                                 <td><?php echo $dat['nombreParte'] ?></td>
+                                                <td><?php echo $dat['idElabora'] ?></td>
                                                 <?php
                                                     if(!is_null($dat['nombreUsuarioEdita'])){?>
                                                         <td><input type="hidden" value="<?php echo $dat['idElabora'] ?>"><?php echo $dat['nombreUsuarioEdita'] ?></td>
@@ -181,6 +184,35 @@ echo ($idUsuario);
                             </div>
                         </div>
 
+                        <!--Modal para CRUD-->
+<div class="modal fade" id="modalCRUDusuarios_examen_parte" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <form id="formPersonas">    
+            <div class="modal-body">
+                <div class="form-group">
+                <label for="idUsuario" class="col-form-label">IdUsuario:</label>
+                <input type="text" class="form-control" id="idUsuario">
+                </div>              
+                <div class="form-group">
+                <label for="edad" class="col-form-label">Nombre:</label>
+                <input type="text" class="form-control" id="nombreUsuario">
+                </div>            
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
+                <button type="submit" id="btnGuardar" class="btn btn-dark">Guardar</button>
+            </div>
+        </form>    
+        </div>
+    </div>
+</div> 
+
                         <div class="modal fade" id="modalCRUD" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -201,7 +233,7 @@ echo ($idUsuario);
                <div class="row">
                 <div class="col">
                 <label for="idUsuario">Name User</label>
-                    <select class="form-control" name="idUsuario" id="idUsuario">
+                    <select class="form-control" name="idUsuarioActualiza" id="idUsuarioActualiza">
                     <?php 
                     $conexion = mysqli_connect('localhost', 'root', '123456', 'bd_final');
                     $query=mysqli_query($conexion,"SELECT usuarios.id, usuarios.nombre AS nombreUsuarios, equipo.idEquipo, equipo.nombre AS nombreEquipo FROM usuarios_equipo 
@@ -399,7 +431,7 @@ echo ($idUsuario);
                 </footer>
             </div>
         </div>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
