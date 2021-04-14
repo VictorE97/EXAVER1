@@ -64,7 +64,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                 <div class="container"> <br>
                     <div class="row">
                         <div class="col-lg-12">            
-                        <button id="btnNuevo" type="button" class="btn btn-success" data-toggle="modal">New Version</button>    
+                        <button id="btnNuevo" type="button" class="btn btn-success" data-toggle="modal">New Team</button>    
                         </div>    
                     </div>    
                 </div> <br>
@@ -114,16 +114,36 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                             <div class="modal-body">
                                 <div class="row">
                                 <div class="col">
-                                    <input type="text" id="nombre" class="form-control" placeholder="Name" required>
+                                <label for="exampleFormControlSelect1">Example select</label>
+                                    <select class="form-control" id="idEquipo" name="idEquipo">
+                                    <?php 
+                                        $conexion = mysqli_connect('localhost', 'root', '123456', 'bd_final');
+                                        $query=mysqli_query($conexion,"SELECT * FROM equipo");
+                                        while($datos = mysqli_fetch_array($query))
+                                            {
+                                                ?>
+                                                <option value="<?php echo $datos['idEquipo']?>"><?php echo $datos['nombre']?></option>
+                                            <?php
+                                            }
+                                                ?>
+                                    </select>
                                 </div>
-                                </div> <br>
-                                
-                                <div class="row">
                                 <div class="col">
-                                    <input type="date" id="fechaInicio" class="form-control" placeholder="Start Date" required>
-                                </div>
-                                <div class="col">
-                                    <input type="date" id="fechaTermino" class="form-control" placeholder="End date" required>
+                                <label for="idVersion">Example select</label>
+                                    <select class="form-control" id="idVersion" name="idVersion">
+                                    <?php 
+                                        $conexion = mysqli_connect('localhost', 'root', '123456', 'bd_final');
+                                        $query=mysqli_query($conexion,"SELECT * FROM version");
+                                        while($datos = mysqli_fetch_array($query))
+                                            {
+                                                ?>
+                                                <option value="<?php echo $datos['idVersion']?>"><?php echo $datos['nombre']?></option>
+                                            <?php
+                                            }
+                                                ?>
+                                    </select>
+                                    
+                                    <!--input type="text" id="version" name="idVersion" class="form-control" placeholder="version" required-->
                                 </div>
                                 </div> <br>           
                             </div>
@@ -193,6 +213,6 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
         <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
         <script src="assets/demo/datatables-demo.js"></script>
-        <script type="text/javascript" src="main1.js"></script>
+        <script type="text/javascript" src="main5.js"></script>
     </body>
 </html>
