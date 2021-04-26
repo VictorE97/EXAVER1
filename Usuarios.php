@@ -140,15 +140,15 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <thead class="text-center">
                                         <tr>
                                             <th>Id</th>
-                                            <th>Nombre</th>
-                                            <th>Correo</th>
-                                            <th>Usuario</th>
+                                            <th>Name</th>
+                                            <th>E-mail</th>
+                                            <th>User</th>
                                             <th>Password</th>
-                                            <th>Telefono</th>
-                                            <th>Estatus</th>
+                                            <th>Phone</th>
+                                            <th>Status</th>
                                             <!--th>Equipo</th>
                                             <th>Perfil</th-->
-                                            <th>Acciones</th>
+                                            <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -220,8 +220,8 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
-                <button type="submit" id="btnGuardar" class="btn btn-dark">Guardar</button>
+                <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+                <button type="submit" id="btnGuardar" class="btn btn-dark">Keep</button>
             </div>
         </form>    
         </div>

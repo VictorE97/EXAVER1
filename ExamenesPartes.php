@@ -81,11 +81,11 @@ $query=mysqli_query($conexion,"SELECT * FROM version");
                                     <thead class="text-center">
                                         <tr>
                                             <th>Id</th>
-                                            <th>Nombre</th>
-                                            <th>Nivel</th>
+                                            <th>Name</th>
+                                            <th>Level</th>
                                             <th>Version</th>
-                                            <th>FechaCreacion</th>
-                                            <th>Acciones</th>
+                                            <th>Creation date</th>
+                                            <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -128,16 +128,16 @@ $query=mysqli_query($conexion,"SELECT * FROM version");
                                 
                                 <div class="row">
                                 <div class="col">
-                                <label for="exampleFormControlSelect1">Example select</label>
+                                <label for="exampleFormControlSelect1">Select level</label>
                                     <select class="form-control" id="exampleFormControlSelect1" name="nivel">
-                                    <option value="0">"Seleccione una opcion"</option>
+                                    <option value="0">"Select level"</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
                                     </select>
                                 </div>
                                 <div class="col">
-                                <label for="idVersion">Example select</label>
+                                <label for="idVersion">Select the version</label>
                                     <select class="form-control" id="idVersion" name="idVersion">
                                             <?php while($datos = mysqli_fetch_array($query))
                                             {
@@ -154,8 +154,8 @@ $query=mysqli_query($conexion,"SELECT * FROM version");
                                 </div> <br>           
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
-                                <button type="submit" id="btnGuardar" class="btn btn-dark">Guardar</button>
+                                <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+                                <button type="submit" id="btnGuardar" class="btn btn-dark">Keep</button>
                             </div>
                         </form>    
                         </div>

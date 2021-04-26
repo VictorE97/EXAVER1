@@ -1,0 +1,30 @@
+@keyframes flipY {
+    from {margin-left: 0px;}
+    to {margin-left: 10px;}
+}
+.answer-content:hover {color: #184f9f;  animation-name: flipY;animation-duration: 0.4s;animation-iteration-count: 1;animation-fill-mode: forwards;}
+.answer-content {
+    padding: 4px;
+    float: left;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+}
+.answer-button i {
+    font-size: 2em;
+    float: left;
+}
+.answer-button {
+    margin-right: 10px;
+    float: left;
+}
+.answer-text {
+    float: left;
+    padding: 3px;
+}
+div#search-part1 {
+    font-size: 1.2em;
+}
+.answers-content{overflow: hidden}
+
+ 

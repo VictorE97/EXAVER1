@@ -20,7 +20,7 @@ $conexion = $objeto->Conectar();
 $consulta = "SELECT partes.idParte, partes.nombre AS nombreParte,
 t3.idRol, t3.nombre AS nombreRolEdita, t5.id, t5.nombre AS nombreUsuarioEdita,
 t4.idRol, t4.nombre AS nombreRolRevisa, t6.id, t6.nombre AS nombreUsuarioRevisa,
-partes.paper, t1.idusuarios_examen_parte AS idElabora, t2.idusuarios_examen_parte AS idRevisa 
+partes.paper, t1.idusuarios_examen_parte AS idElabora, t2.idusuarios_examen_parte AS idRevisa, papers.nombre as nombrePaper
 FROM partes
 INNER JOIN examen_parte
 ON partes.idParte = examen_parte.idParte
@@ -46,7 +46,9 @@ LEFT JOIN usuarios t5
 ON t1.idUsuario = t5.id
 LEFT JOIN usuarios t6
 ON t2.idUsuario = t6.id
-WHERE usuarios_perfiles.idUsuario = '".$idUsuario."' AND examenes.nivel = '".$nombreNivel."' group by partes.idParte";
+LEFT JOIN papers
+ON papers.idPaper = partes.paper
+WHERE usuarios_perfiles.idUsuario = '".$idUsuario."' AND examenes.nivel = '".$nombreNivel."' group by partes.idParte;";
 $resultado = $conexion->prepare($consulta);
 $resultado->execute();
 $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
@@ -86,7 +88,7 @@ echo ($idUsuario);
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
-                        <h1 class="mt-4">Dashboard</h1>
+                        <h1 class="mt-4">Version</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Dashboard</li>
                         </ol>              
@@ -124,27 +126,27 @@ echo ($idUsuario);
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table mr-1"></i>
-                                DataTable Example
+                                Tabla de Elaborador/Revisor
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-bordered" id="tablaUsuarios_examen_parte" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
-                                                <th>IdParte</th>
-                                                <th>NomParte</th>
+                                                <th>Id</th>
+                                                <th>Task</th>
                                                 <th>Elabora</th>
                                                 <th>Revisa</th>
-                                                <th>Acciones</th>
+                                                <th>Actions</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                                <th>IdParte</th>
-                                                <th>NomParte</th>
+                                                <th>Id</th>
+                                                <th>Task</th>
                                                 <th>Elabora</th>
                                                 <th>Revisa</th>
-                                                <th>Acciones</th>
+                                                <th>Actions</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>
@@ -154,22 +156,23 @@ echo ($idUsuario);
                                         ?>
                                             <tr>
                                                 <td><?php echo $dat['idParte'] ?></td>
-                                                <td><?php echo $dat['nombreParte'] ?></td>
+                                                <td><?php echo $dat['nombrePaper'] ?> <?php echo $dat['nombreParte'] ?></td>
                                                 <?php
                                                     if(!is_null($dat['nombreUsuarioEdita'])){?>
-                                                        <td><input type="hidden" value="<?php echo $dat['idElabora'] ?>"><?php echo $dat['nombreUsuarioEdita'] ?></td>
+                                                        <td><input type="hidden" value="<?php echo $dat['idElabora'] ?>"><button title='Update Team' class='btn btn-primary btnEditarElaborador' style='margin-right: 5px;'>IW</button><?php echo $dat['nombreUsuarioEdita'] ?></td>
                                                  <?php   }else{?>
-                                                 <td></td>
+                                                 <td><button title='Update Team' class='btn btn-primary btnEditarElaboradorA' style='margin-right: 5px;'>IW</button></td>
                                                  <?php }
                                                 ?>
                                                 <?php
                                                     if(!is_null($dat['nombreUsuarioRevisa'])){?>
-                                                        <td><input type="hidden" value="<?php echo $dat['idRevisa'] ?>"><?php echo $dat['nombreUsuarioRevisa'] ?></td>
+                                                        <td><input type="hidden" value="<?php echo $dat['idRevisa'] ?>"><button class='btn btn-success btnEditarRevisor'>PC</button><?php echo $dat['nombreUsuarioRevisa'] ?></td>
                                                  <?php   }else{?>
-                                                 <td></td>
+                                                 <td><button class='btn btn-success btnEditarRevisorA'>PC</button></td>
                                                  <?php }
                                                 ?>
                                                 <td></td>
+                                                
                                             </tr>
                                             <?php
                                             }
@@ -202,7 +205,7 @@ echo ($idUsuario);
 
                <div class="row">
                 <div class="col">
-                <label for="idUsuario">Name User</label>
+                <label for="idUsuario">Nombre Usuario Elabora</label>
                     <select class="form-control" name="idUsuarioActualiza" id="idUsuarioActualiza">
                     <?php 
                     $conexion = mysqli_connect('localhost', 'root', '123456', 'bd_final');
@@ -288,8 +291,8 @@ echo ($idUsuario);
             </div-->           
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
-                <button type="submit" id="btnGuardar" class="btn btn-dark">Guardar</button>
+                <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+                <button type="submit" id="btnGuardar" class="btn btn-dark">Keep</button>
             </div>
         </form>    
         </div>
@@ -301,7 +304,7 @@ echo ($idUsuario);
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Register Elaborates</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Registrar Elaborador</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -310,7 +313,7 @@ echo ($idUsuario);
         <form action="Agregar/AgregarElaborador.php" method="POST">
             <div class="row">
                 <div class="col">
-                <label for="idUsuario">Name User</label>
+                <label for="idUsuario">Nombre Usuario Elaborar</label>
                     <select class="form-control" name="idUsuario" id="idUsuario">
                     <?php 
                     $conexion = mysqli_connect('localhost', 'root', '123456', 'bd_final');
@@ -343,8 +346,8 @@ echo ($idUsuario);
                </div>
             </div>
             <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <input type="submit" class="btn btn-primary" value="Ok">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <input type="submit" class="btn btn-primary" value="Guardar">
       </div>
         </form>
       </div>
@@ -357,7 +360,7 @@ echo ($idUsuario);
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Register Check out</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Registrar Revisor</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -365,7 +368,7 @@ echo ($idUsuario);
       <div class="modal-body">
         <form action="Agregar/AgregarRevisor.php" method="POST">
             <div class="row">
-                <div class="col"><label for="idUsuario">Name User</label>
+                <div class="col"><label for="idUsuario">Nombre Usuario Revisa</label>
                     <select class="form-control" name="idUsuario" id="idUsuario">
                     <?php
                     $conexion = mysqli_connect('localhost', 'root', '123456', 'bd_final');
@@ -398,8 +401,8 @@ echo ($idUsuario);
                 </div>
             </div>
             <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <input type="submit" class="btn btn-primary" value="Ok">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <input type="submit" class="btn btn-primary" value="Aceptar">
       </div>
         </form>
       </div>

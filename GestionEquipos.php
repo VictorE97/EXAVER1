@@ -77,9 +77,9 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <thead class="text-center">
                                         <tr>
                                             <th>Id</th>
-                                            <th>Equipo</th>
+                                            <th>Team</th>
                                             <th>Version</th>
-                                            <th>Acciones</th>
+                                            <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -114,7 +114,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                             <div class="modal-body">
                                 <div class="row">
                                 <div class="col">
-                                <label for="exampleFormControlSelect1">Example select</label>
+                                <label for="exampleFormControlSelect1">Select team</label>
                                     <select class="form-control" id="idEquipo" name="idEquipo">
                                     <?php 
                                         $conexion = mysqli_connect('localhost', 'root', '123456', 'bd_final');
@@ -129,7 +129,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                                     </select>
                                 </div>
                                 <div class="col">
-                                <label for="idVersion">Example select</label>
+                                <label for="idVersion">Select the version</label>
                                     <select class="form-control" id="idVersion" name="idVersion">
                                     <?php 
                                         $conexion = mysqli_connect('localhost', 'root', '123456', 'bd_final');
@@ -148,8 +148,8 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                                 </div> <br>           
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
-                                <button type="submit" id="btnGuardar" class="btn btn-dark">Guardar</button>
+                                <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+                                <button type="submit" id="btnGuardar" class="btn btn-dark">Keep</button>
                             </div>
                         </form>    
                         </div>

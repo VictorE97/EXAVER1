@@ -3,7 +3,7 @@ $(document).ready(function(){
        "columnDefs":[{
         "targets": -1,
         "data":null,
-        "defaultContent": "<div class='text-center'><div class='btn-group'><button class='btn btn-primary btnEditar'>Editar</button><button class='btn btn-danger btnBorrar'>Borrar</button></div></div>"  
+        "defaultContent": "<div class='text-center'><div class='btn-group'><button class='btn btn-primary btnEditar'>Edit</button><button class='btn btn-danger btnBorrar'>Delete</button></div></div>"  
        }],
         
         //Para cambiar el lenguaje a español
@@ -71,7 +71,7 @@ $(document).on("click", ".btnBorrar", function(){
     fila = $(this);
     id = parseInt($(this).closest("tr").find('td:eq(0)').text());
     opcion = 3 //borrar
-    var respuesta = confirm("¿Está seguro de eliminar el registro: "+id+"?");
+    var respuesta = confirm("¿Are you sure to delete the record: "+id+"?");
     if(respuesta){
         $.ajax({
             url: "bd/crud.php",

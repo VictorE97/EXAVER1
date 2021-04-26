@@ -3,7 +3,7 @@ $(document).ready(function(){
        "columnDefs":[{
         "targets": -1,
         "data":null,
-        "defaultContent": "<div class='text-center'><div class='btn-group'><button title='Update Team' class='btn btn-primary btnEditarElaborador' style='margin-right: 5px;'>IW</button><button class='btn btn-success btnEditarRevisor'>PC</button></div></div>"  
+        "defaultContent": ""  
        }],
         
         //Para cambiar el lenguaje a español
@@ -60,10 +60,36 @@ $(document).on("click", ".btnEditarElaborador", function(){
         //alert($("#idUsuarioModalEquipo").val());
         $("#ModalElabora").modal("show");
     }else{
-        $(".modal-title").text("Update Elaborates");
+        $(".modal-title").text("Actualizar Elaborador");
 
         $("#modalCRUD").modal("show"); 
     }
+      
+    
+});
+
+$(document).on("click", ".btnEditarElaboradorA", function(){
+    fila = $(this).closest("tr");
+    idexamen_parte = parseInt(fila.find('td:eq(0)').text());
+    nombre = fila.find('td:eq(1)').text();
+    usuario = fila.find('td:eq(2)').text();
+    idUsuario = fila.find('td:eq(2)').text();
+    //equipo = fila.find('td:eq(2)').text();
+    //idEquipo = parseInt(fila.find('td:eq(2)').text());
+    //idPerfil = (fila.find('td:eq(3)').text());
+    
+    $("#nombre").val(nombre);
+    $("#nombreUsuarioEdita").val(idUsuario);
+    //$("#nombrePerfilE").val(idPerfil);
+    opcion = 2; //editar
+    
+    $(".modal-header").css("background-color", "#007bff");
+    $(".modal-header").css("color", "white");
+        $("#idexamen_parteModal").val(idexamen_parte);
+        $(".modal-title").text("Registrar Elaborador");
+        //alert($("#idUsuarioModalEquipo").val());
+        $("#ModalElabora").modal("show");
+    
       
     
 });
@@ -83,13 +109,34 @@ $(document).on("click", ".btnEditarRevisor", function(){
     $(".modal-header").css("color", "white");
     if(revisa==""){
         $("#idexamen_parteModalRevisor").val(idexamen_parte);
-        $(".modal-title").text("Register Check out");
+        $(".modal-title").text("Registrar Revisor");
         //alert($("#idUsuarioModalPerfil").val());
         $("#ModalRevisor").modal("show");
     }else{
         $(".modal-title").text("Update Check out");            
         $("#modalActualizarPerfil").modal("show");
     }
+      
+    
+});
+
+$(document).on("click", ".btnEditarRevisorA", function(){
+    fila = $(this).closest("tr");
+    idexamen_parte = parseInt(fila.find('td:eq(0)').text());
+    nombre = fila.find('td:eq(1)').text();
+    revisa = fila.find('td:eq(3)').text();
+    //idEquipo = (fila.find('td:eq(2)').text());
+    //idPerfil = parseInt(fila.find('td:eq(3)').text());
+    $("#nombreRevisa").val(nombre);
+    opcion = 2; //editar
+    
+    $(".modal-header").css("background-color", "#007bff");
+    $(".modal-header").css("color", "white");
+        $("#idexamen_parteModalRevisor").val(idexamen_parte);
+        $(".modal-title").text("Registrar Revisor");
+        //alert($("#idUsuarioModalPerfil").val());
+        $("#ModalRevisor").modal("show");
+    
       
     
 });

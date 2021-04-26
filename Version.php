@@ -111,10 +111,10 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <thead class="text-center">
                                         <tr>
                                             <th>Id</th>
-                                            <th>Nombre</th>
-                                            <th>Fecha Inicio</th>
-                                            <th>Fecha Termino</th>
-                                            <th>Acciones</th>
+                                            <th>Name</th>
+                                            <th>Start date</th>
+                                            <th>End date</th>
+                                            <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -156,16 +156,18 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                                 
                                 <div class="row">
                                 <div class="col">
+                                    <label for="">Creation date</label>
                                     <input type="date" id="fechaInicio" class="form-control" placeholder="Start Date" required>
                                 </div>
                                 <div class="col">
+                                    <label for="">Deliver date</label>
                                     <input type="date" id="fechaTermino" class="form-control" placeholder="End date" required>
                                 </div>
                                 </div> <br>           
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
-                                <button type="submit" id="btnGuardar" class="btn btn-dark">Guardar</button>
+                                <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+                                <button type="submit" id="btnGuardar" class="btn btn-dark">Keep</button>
                             </div>
                         </form>    
                         </div>

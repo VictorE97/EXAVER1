@@ -1,0 +1,18 @@
+.esquinas {
+  border-radius: 0px 200px 10px 200px;
+  -moz-border-radius: 0px 200px 10px 200px;
+  -webkit-border-radius: 0px 200px 10px 200px;
+  border: 0px solid #000000;
+}
+.colorExaver1 {
+  background-color: #c0392b;
+}
+.colorExaver2 {
+  background-color: #27ae60;
+}
+.colorExaver3 {
+  background-color: #2e86c1;
+}
+.colorRed {
+  background-color: blue;
+}

@@ -3,7 +3,7 @@ $(document).ready(function(){
        "columnDefs":[{
         "targets": -1,
         "data":null,
-        "defaultContent": "<div class='text-center'><div class='btn-group'><button class='btn btn-primary btnEditar'>Editar</button><button class='btn btn-danger btnBorrar'>Borrar</button></div></div>"  
+        "defaultContent": "<div class='text-center'><div class='btn-group'><button class='btn btn-primary btnEditar'>Edit</button><button class='btn btn-danger btnBorrar'>Delete</button></div></div>"  
        }],
         
         //Para cambiar el lenguaje a español
@@ -28,7 +28,7 @@ $("#btnNuevo").click(function(){
     $("#formPersonas").trigger("reset");
     $(".modal-header").css("background-color", "#28a745");
     $(".modal-header").css("color", "white");
-    $(".modal-title").text("New User");            
+    $(".modal-title").text("New Version");            
     $("#modalCRUD").modal("show");        
     idVersion=null;
     opcion = 1; //alta
@@ -51,7 +51,7 @@ $(document).on("click", ".btnEditar", function(){
     
     $(".modal-header").css("background-color", "#007bff");
     $(".modal-header").css("color", "white");
-    $(".modal-title").text("Update User");            
+    $(".modal-title").text("Update Version");            
     $("#modalCRUD").modal("show");  
     
 });
@@ -61,7 +61,7 @@ $(document).on("click", ".btnBorrar", function(){
     fila = $(this);
     idVersion = parseInt($(this).closest("tr").find('td:eq(0)').text());
     opcion = 3 //borrar
-    var respuesta = confirm("¿Está seguro de eliminar el registro: "+idVersion+"?");
+    var respuesta = confirm("¿Are you sure to delete the record: "+idVersion+"?");
     if(respuesta){
         $.ajax({
             url: "bd/crudVersion.php",
