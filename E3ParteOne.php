@@ -1,4 +1,16 @@
+<?php
 
+    session_start();
+
+    if(!isset($_SESSION['id'])){
+        header("Location: login.php");
+    }
+
+    $nombre = $_SESSION['nombreUsuario'];
+    $idUsuario = $_SESSION['id'];
+    $nombreNivel = $_SESSION['nombreNivel'];
+
+?>
 <!DOCTYPE html>
 <html lang="en" translate="no">
 <!DOCTYPE html>
@@ -66,7 +78,7 @@
          <div class="contenedorPrincipal">
             <div class="alert miBordeDoble">
                <div>
-                  <p id="GFG_UP"><b>
+                  <p><b>
                      <textarea name="Instruccion" id="Instruccion" style="width:1060px;height:80px;"></textarea>
                      </b>
                   </p>
@@ -81,7 +93,7 @@
                <div class="row">
                   <div class="col-3">
                      <p><b> EXAMPLE</b></p>
-                     <P> <B> <input type="text" name="3p1p1_pg0" id=""> </B></P>
+                     <P> <B> <input type="text" name="3p1p1_pg0" id="3p1p1_pg0"> </B></P>
                   </div>
                   <div class="col-6"></div>
                   <div class="col-3 text-right">
@@ -90,7 +102,7 @@
                         <button class="button button4">
                      <p>G</p>
                      </button>
-                     <textarea name="3p1p1_opcG" id=""></textarea></p>
+                     <textarea name="3p1p1_opcG" id="3p1p1_opcG"></textarea></p>
                   </div>
                </div>
             </div>
@@ -102,31 +114,31 @@
                   <div style="margin-left: 20px">
                   
                            <div class="text-center">
-                              <h5><input type="text" name="3p1p1_pg1" id=""></h5>
+                              <h5><input type="text" name="3p1p1_pg1" id="3p1p1_pg1"></h5>
                            </div>
                            <div class="text-justify">
-                              <p><b><input type="text" name="3p1p1_pg2" id=""></b></p><br>
+                              <p><b><input type="text" name="3p1p1_pg2" id="3p1p1_pg2"></b></p><br>
                               <p><textarea name="3p1p1_pg3" id="" style="width:800px;height:130px;"></textarea></p>
                            </div>
                            <div class="text-justify">
-                              <p><b><input type="text" name="3p1p1_pg4" id=""></b></p><br>
+                              <p><b><input type="text" name="3p1p1_pg4" id="3p1p1_pg4"></b></p><br>
                               <p><textarea name="3p1p1_pg5" id="" style="width:800px;height:130px;"></textarea></p>
                            </div>
                            <div class="text-justify">
-                              <p><b><input type="text" name="3p1p1_pg6" id=""></b></p><br>
+                              <p><b><input type="text" name="3p1p1_pg6" id="3p1p1_pg6"></b></p><br>
                               <p><textarea name="3p1p1_pg7" id="" style="width:800px;height:130px;"></textarea></p>
                            </div>
                            <div class="text-justify">
-                              <p><b><input type="text" name="3p1p1_pg8" id=""></b></p><br>
-                              <p><textarea name="3p1p1_pg9" id="" style="width:800px;height:130px;"></textarea></p>
+                              <p><b><input type="text" name="3p1p1_pg8" id="3p1p1_pg8"></b></p><br>
+                              <p><textarea name="3p1p1_pg9" id="3p1p1_pg9" style="width:800px;height:130px;"></textarea></p>
                            </div>
                            <div class="text-justify">
-                              <p><b><input type="text" name="3p1p1_pg10" id=""></b></p><br>
-                              <p><textarea name="3p1p1_pg11" id="" style="width:800px;height:130px;"></textarea></p>
+                              <p><b><input type="text" name="3p1p1_pg10" id="3p1p1_pg10"></b></p><br>
+                              <p><textarea name="3p1p1_pg11" id="3p1p1_pg11" style="width:800px;height:130px;"></textarea></p>
                            </div>
                            <div class="text-justify">
-                              <p><b><input type="text" name="3p1p1_pg12" id=""></b></p><br>
-                              <p><textarea name="3p1p1_pg13" id="" style="width:800px;height:130px;"></textarea></p>
+                              <p><b><input type="text" name="e3p1p1_pg12" id="e3p1p1_pg12"></b></p><br>
+                              <p><textarea name="3p1p1_pg13" id="3p1p1_pg13" style="width:800px;height:130px;"></textarea></p>
                            </div>
                   </div>
                </div>
@@ -140,7 +152,7 @@
                               <p><b>A</b> </p>
                            </div>
                            <div class="col-10 text-right">
-                              <p><textarea name="3p1p1_opcA" id=""></textarea></p>
+                              <p><textarea name="3p1p1_opcA" id="3p1p1_opcA"></textarea></p>
 
                            </div>
                         </div>
@@ -154,7 +166,7 @@
                               <p><b>B</b></p>
                            </div>
                            <div class="col-10 text-right">
-                              <p><textarea name="3p1p1_opcB" id=""></textarea></p>
+                              <p><textarea name="3p1p1_opcB" id="3p1p1_opcB"></textarea></p>
 
                            </div>
                         </div>
@@ -168,7 +180,7 @@
                               <p><b>C</b></p>
                            </div>
                            <div class="col-10 text-right">
-                              <p><textarea name="3p1p1_opcC" id=""></textarea></p>
+                              <p><textarea name="3p1p1_opcC" id="3p1p1_opcC"></textarea></p>
 
                            </div>
                         </div>
@@ -182,7 +194,7 @@
                               <p><b>D</b></p>
                            </div>
                            <div class="col-10 text-right">
-                              <p><textarea name="3p1p1_opcD" id=""></textarea></p>
+                              <p><textarea name="3p1p1_opcD" id="3p1p1_opcD"></textarea></p>
 
                            </div>
                         </div>
@@ -196,7 +208,7 @@
                               <p><b>E</b></p>
                            </div>
                            <div class="col-10 text-right">
-                              <p><textarea name="3p1p1_opcE" id=""></textarea></p>
+                              <p><textarea name="3p1p1_opcE" id="3p1p1_opcE"></textarea></p>
 
                            </div>
                         </div>
@@ -210,7 +222,7 @@
                               <p><b>F</b></p>
                            </div>
                            <div class="col-10 text-right">
-                              <p><textarea name="3p1p1_opcF" id=""></textarea></p>
+                              <p><textarea name="3p1p1_opcF" id="3p1p1_opcF"></textarea></p>
 
                            </div>
                         </div>
@@ -241,33 +253,49 @@
                 <script>
         $('#GFG_UP')
         .text('Click the button to serialize the object to query string');
-        var data = {
-            param1: 'Instruccion',
-            param2: '3p1p1_pg0',
-            param3: '3p1p1_opcG',
-            param4: '3p1p1_pg1',
-            param5: '3p1p1_pg2',
-            param6: '3p1p1_pg3',
-            param7: '3p1p1_pg4',
-            param8: '3p1p1_pg5',
-            param9: '3p1p1_pg6',
-            param10: '3p1p1_pg7',
-            param11: '3p1p1_pg8',
-            param12: '3p1p1_pg9',
-            param13: '3p1p1_pg10',
-            param14: '3p1p1_pg11',
-            param15: '3p1p1_pg12',
-            param16: '3p1p1_pg13',
-            param3: '3p1p1_opcA',
-            param3: '3p1p1_opcB',
-            param3: '3p1p1_opcC',
-            param3: '3p1p1_opcD',
-            param3: '3p1p1_opcE',
-            param3: '3p1p1_opcF'
+        
+        $('button').on('click', function() {
+           alert ($('#Instruccion').val());
+           alert ($('#3p1p1_opcE').val());
+         var data = {
+            e3p1p1_Instruccion: $('#Instruccion').val(),
+            e3p1p1_pg0: $('#3p1p1_pg0').val(),
+            e3p1p1_opcG: $('#3p1p1_pgG').val(),
+            e3p1p1_pg1: $('#3p1p1_pg1').val(),
+            e3p1p1_pg2: $('#3p1p1_pg2').val(),
+            e3p1p1_pg3: $('#3p1p1_pg3').val(),
+            e3p1p1_pg4: $('#3p1p1_pg4').val(),
+            e3p1p1_pg5: $('#3p1p1_pg5').val(),
+            e3p1p1_pg6: $('#3p1p1_pg6').val(),
+            e3p1p1_pg7: $('#3p1p1_pg7').val(),
+            e3p1p1_pg8: $('#3p1p1_pg8').val(),
+            e3p1p1_pg9: $('#3p1p1_pg9').val(),
+            e3p1p1_pg10: $('#3p1p1_pg10').val(),
+            e3p1p1_pg11: $('#3p1p1_pg11').val(),
+            e3p1p1_pg12: $('#3p1p1_pg12').val(),
+            e3p1p1_pg13: $('#3p1p1_pg13').val(),
+            e3p1p1_opcA: $('#3p1p1_opcA').val(),
+            e3p1p1_opcB: $('#3p1p1_opcB').val(),
+            e3p1p1_opcC: $('#3p1p1_opcC').val(),
+            e3p1p1_opcD: $('#3p1p1_opcD').val(),
+            e3p1p1_opcE: $('#3p1p1_opcE').val(),
+            e3p1p1_opcF: $('#3p1p1_opcF').val(),
+
 
         };
+        var Guardar = JSON.stringify(data);
+        alert ("'<?php echo $idUsuario ?>'");
+        $.ajax({
+        url: "bd/AgregarE3ParteOne.php",
+        type: "POST",
+        dataType: "json",
+        data: {idexamen_parte: 22, idUsuario: <?php echo ($idUsuario); ?>, TrabajoIW: Guardar, estatus: 1},
+        success: function(data){  
+            console.log(data);
+            alert ("Se guardo exitosamente");            
+        }        
+    });
         $('#GFG_UP2').text(JSON.stringify(data));
-        $('button').on('click', function() {
             var result = $.param(data);
             $('#GFG_DOWN').text(result);
         });
@@ -281,3 +309,64 @@
                 </footer>
             </div>
  </footer></html>
+ <script>
+ $( document ).ready(function() {
+ //function recuperaTextos(){
+//var dataDT = getObject('bd/ConsultarE3ParteOne.php', {}, function (dataDT) {
+var htmlDt = '';
+$.ajax({
+        url: "bd/ConsultarE3ParteOne.php",
+        type: "POST",
+        dataType: "json",
+        data: {},
+        success: function(data){  
+            console.log(data);
+            //alert ("Se guardo exitosamente");
+            //alert(JSON.stringify(data)); 
+            if (data && Object.keys(data).length) { //Validar que lo que regresa no esta vacio
+//$.each(data, function (k, v) {
+   //alert(JSON.stringify(v));
+   //alert (v);
+   obj = /*JSON.stringify*/data;
+   Object.keys(obj).forEach(key => {
+console.log(key, obj[key]);
+switch (key) {
+case "e3p1p1_pg11":
+$('#e3p1p1_pg11').val(obj[key]);
+break;
+case "e3p1p1_pg12":
+$('#e3p1p1_pg12').val(obj[key]);
+break;
+}
+//console.log(Object.entries(obj));
+//alert (console.log(key, obj[key]));
+});
+// key1 value1
+// key2 value2
+// key3 value3
+
+// using for in - same output as above
+for (let key in obj) {
+let value = obj[key];
+//console.log(key, value);
+//alert (key)
+}
+
+//});
+} else {
+//MENSAJE El sustentante no respondió.
+// $('#res_busqueda').hide();
+// $('#res_busqueda_message').show();
+}         
+        },
+        error: function(data) {
+            alert('Exception:'+data);
+            alert(JSON.stringify(data, '', 2));
+        }               
+//var i = 1;
+});
+
+
+ //}
+ });
+ </script>
