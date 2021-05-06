@@ -68,7 +68,7 @@ $query=mysqli_query($conexion,"SELECT * FROM version");
                 <div class="container"> <br>
                     <div class="row">
                         <div class="col-lg-12">            
-                        <button id="btnNuevo" type="button" class="btn btn-success" data-toggle="modal">New Exam</button>    
+                        <button id="btnNuevo" type="button" class="btn btn-success" data-toggle="modal">Nuevo Examen</button>    
                         </div>    
                     </div>    
                 </div> <br>
@@ -81,11 +81,11 @@ $query=mysqli_query($conexion,"SELECT * FROM version");
                                     <thead class="text-center">
                                         <tr>
                                             <th>Id</th>
-                                            <th>Name</th>
-                                            <th>Level</th>
+                                            <th>Nombre</th>
+                                            <th>Nivel</th>
                                             <th>Version</th>
-                                            <th>Creation date</th>
-                                            <th>Actions</th>
+                                            <th>Fecha Creacion</th>
+                                            <th>Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -122,22 +122,22 @@ $query=mysqli_query($conexion,"SELECT * FROM version");
                             <div class="modal-body">
                                 <div class="row">
                                 <div class="col">
-                                    <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Name" required>
+                                    <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre" required>
                                 </div>
                                 </div> <br>
                                 
                                 <div class="row">
                                 <div class="col">
-                                <label for="exampleFormControlSelect1">Select level</label>
+                                <label for="exampleFormControlSelect1">Nivel</label>
                                     <select class="form-control" id="exampleFormControlSelect1" name="nivel">
-                                    <option value="0">"Select level"</option>
+                                    <option value="0">"Nivel"</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
                                     </select>
                                 </div>
                                 <div class="col">
-                                <label for="idVersion">Select the version</label>
+                                <label for="idVersion">Version</label>
                                     <select class="form-control" id="idVersion" name="idVersion">
                                             <?php while($datos = mysqli_fetch_array($query))
                                             {
@@ -154,8 +154,8 @@ $query=mysqli_query($conexion,"SELECT * FROM version");
                                 </div> <br>           
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
-                                <button type="submit" id="btnGuardar" class="btn btn-dark">Keep</button>
+                                <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
+                                <button type="submit" id="btnGuardar" class="btn btn-dark">Guardar</button>
                             </div>
                         </form>    
                         </div>

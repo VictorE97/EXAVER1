@@ -113,7 +113,7 @@ $(document).on("click", ".btnEditarRevisor", function(){
         //alert($("#idUsuarioModalPerfil").val());
         $("#ModalRevisor").modal("show");
     }else{
-        $(".modal-title").text("Update Check out");            
+        $(".modal-title").text("Actualizar Revisor");            
         $("#modalActualizarPerfil").modal("show");
     }
       

@@ -64,7 +64,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                 <div class="container"> <br>
                     <div class="row">
                         <div class="col-lg-12">            
-                        <button id="btnNuevo" type="button" class="btn btn-success" data-toggle="modal">New Team</button>    
+                        <button id="btnNuevo" type="button" class="btn btn-success" data-toggle="modal">Nuevo Equipo</button>    
                         </div>    
                     </div>    
                 </div> <br>
@@ -77,9 +77,9 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <thead class="text-center">
                                         <tr>
                                             <th>Id</th>
-                                            <th>Team</th>
+                                            <th>Equipo</th>
                                             <th>Version</th>
-                                            <th>Actions</th>
+                                            <th>Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -114,7 +114,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                             <div class="modal-body">
                                 <div class="row">
                                 <div class="col">
-                                <label for="exampleFormControlSelect1">Select team</label>
+                                <label for="exampleFormControlSelect1">Equipo</label>
                                     <select class="form-control" id="idEquipo" name="idEquipo">
                                     <?php 
                                         $conexion = mysqli_connect('localhost', 'root', '123456', 'bd_final');
@@ -129,7 +129,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                                     </select>
                                 </div>
                                 <div class="col">
-                                <label for="idVersion">Select the version</label>
+                                <label for="idVersion">Version</label>
                                     <select class="form-control" id="idVersion" name="idVersion">
                                     <?php 
                                         $conexion = mysqli_connect('localhost', 'root', '123456', 'bd_final');
@@ -148,8 +148,8 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                                 </div> <br>           
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
-                                <button type="submit" id="btnGuardar" class="btn btn-dark">Keep</button>
+                                <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
+                                <button type="submit" id="btnGuardar" class="btn btn-dark">Guardar</button>
                             </div>
                         </form>    
                         </div>

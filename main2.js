@@ -3,7 +3,7 @@ $(document).ready(function(){
        "columnDefs":[{
         "targets": -1,
         "data":null,
-        "defaultContent": "<div class='text-center'><div class='btn-group'><button title='Update Team' class='btn btn-primary btnEditarEquipo'>Team</button><button class='btn btn-success btnEditarPerfil'>Profile</button></div></div>"  
+        "defaultContent": "<div class='text-center'><div class='btn-group'><button title='Update Team' class='btn btn-primary btnEditarEquipo'>Equipo</button><button class='btn btn-success btnEditarPerfil'>Perfil</button></div></div>"  
        }],
         
         //Para cambiar el lenguaje a español
@@ -54,11 +54,11 @@ $(document).on("click", ".btnEditarEquipo", function(){
     $(".modal-header").css("color", "white");
     if(equipo==""){
         $("#idUsuarioModalEquipo").val(idusuarios_equipo);
-        $(".modal-title").text("Register Team");
+        $(".modal-title").text("Registrar Equipo");
         //alert($("#idUsuarioModalEquipo").val());
         $("#ModalEquipo").modal("show");
     }else{
-        $(".modal-title").text("Update Team");
+        $(".modal-title").text("Actualizar Equipo");
 
         $("#modalCRUD").modal("show"); 
     }
@@ -83,11 +83,11 @@ $(document).on("click", ".btnEditarPerfil", function(){
     $(".modal-header").css("color", "white");
     if(perfil==""){
         $("#idUsuarioModalPerfil").val(idusuarios_perfiles);
-        $(".modal-title").text("Register Profile");
+        $(".modal-title").text("Registrar Perfil");
         //alert($("#idUsuarioModalPerfil").val());
         $("#ModalPerfilAgregar").modal("show");
     }else{
-        $(".modal-title").text("Update Profile");            
+        $(".modal-title").text("Actualizar Perfil");            
         $("#modalActualizarPerfil").modal("show");
     }
       

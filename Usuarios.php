@@ -127,7 +127,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                 <div class="container"> <br>
                     <div class="row">
                         <div class="col-lg-12">            
-                        <button id="btnNuevo" type="button" class="btn btn-success" data-toggle="modal">New User</button>    
+                        <button id="btnNuevo" type="button" class="btn btn-success" data-toggle="modal">Nuevo Usuario</button>    
                         </div>    
                     </div>    
                 </div> <br>
@@ -140,15 +140,15 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <thead class="text-center">
                                         <tr>
                                             <th>Id</th>
-                                            <th>Name</th>
-                                            <th>E-mail</th>
-                                            <th>User</th>
-                                            <th>Password</th>
-                                            <th>Phone</th>
-                                            <th>Status</th>
+                                            <th>Nombre</th>
+                                            <th>Correo</th>
+                                            <th>Usuario</th>
+                                            <th>Contraseña</th>
+                                            <th>Telefono</th>
+                                            <th>Estatus</th>
                                             <!--th>Equipo</th>
                                             <th>Perfil</th-->
-                                            <th>Actions</th>
+                                            <th>Funciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -188,28 +188,28 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
             <div class="modal-body">
                 <div class="row">
                 <div class="col">
-                    <input type="text" id="nombre" class="form-control" placeholder="Name" required>
+                    <input type="text" id="nombre" class="form-control" placeholder="Nombre" required>
                 </div>
                 <div class="col">
-                    <input type="email" id="correo" class="form-control" placeholder="E-mail" required>
+                    <input type="email" id="correo" class="form-control" placeholder="Correo" required>
                 </div>
                 </div> <br>
                 
                 <div class="row">
                 <div class="col">
-                    <input type="text" id="usuario" class="form-control" placeholder="User" required>
+                    <input type="text" id="usuario" class="form-control" placeholder="Usuario" required>
                 </div>
                 <div class="col">
-                    <input type="password" id="password" class="form-control" placeholder="Password" required>
+                    <input type="password" id="password" class="form-control" placeholder="Contraseña" required>
                 </div>
                 </div> <br>
 
                 <div class="row">
                 <div class="col">
-                    <input type="text" id="telefono" class="form-control" placeholder="Phone" required>
+                    <input type="text" id="telefono" class="form-control" placeholder="Telefono" required>
                 </div>
                 <div class="col">
-                    <label for="estatus">Status</label>
+                    <label for="estatus">Estado</label>
                         <select class="form-control" id="estatus">
                           <option>Activo</option>
                           <option>Inactivo</option>
@@ -220,8 +220,8 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
-                <button type="submit" id="btnGuardar" class="btn btn-dark">Keep</button>
+                <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
+                <button type="submit" id="btnGuardar" class="btn btn-dark">Guardar</button>
             </div>
         </form>    
         </div>

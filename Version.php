@@ -98,7 +98,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                 <div class="container"> <br>
                     <div class="row">
                         <div class="col-lg-12">            
-                        <button id="btnNuevo" type="button" class="btn btn-success" data-toggle="modal">New Version</button>    
+                        <button id="btnNuevo" type="button" class="btn btn-success" data-toggle="modal">Nueva Version</button>    
                         </div>    
                     </div>    
                 </div> <br>
@@ -111,10 +111,10 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <thead class="text-center">
                                         <tr>
                                             <th>Id</th>
-                                            <th>Name</th>
-                                            <th>Start date</th>
-                                            <th>End date</th>
-                                            <th>Actions</th>
+                                            <th>Nombre</th>
+                                            <th>Fecha Inicio</th>
+                                            <th>Fecha Termino</th>
+                                            <th>Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -150,24 +150,24 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                             <div class="modal-body">
                                 <div class="row">
                                 <div class="col">
-                                    <input type="text" id="nombre" class="form-control" placeholder="Name" required>
+                                    <input type="text" id="nombre" class="form-control" placeholder="Nombre" required>
                                 </div>
                                 </div> <br>
                                 
                                 <div class="row">
                                 <div class="col">
-                                    <label for="">Creation date</label>
+                                    <label for="">Fecha Creacion</label>
                                     <input type="date" id="fechaInicio" class="form-control" placeholder="Start Date" required>
                                 </div>
                                 <div class="col">
-                                    <label for="">Deliver date</label>
+                                    <label for="">Fecha Termino</label>
                                     <input type="date" id="fechaTermino" class="form-control" placeholder="End date" required>
                                 </div>
                                 </div> <br>           
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
-                                <button type="submit" id="btnGuardar" class="btn btn-dark">Keep</button>
+                                <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
+                                <button type="submit" id="btnGuardar" class="btn btn-dark">Guardar</button>
                             </div>
                         </form>    
                         </div>

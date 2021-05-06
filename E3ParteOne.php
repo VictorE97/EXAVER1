@@ -79,7 +79,7 @@
             <div class="alert miBordeDoble">
                <div>
                   <p><b>
-                     <textarea name="Instruccion" id="Instruccion" style="width:1060px;height:80px;"></textarea>
+                     <textarea name="e3p1p1_Instruccion" id="e3p1p1_Instruccion" style="width:1060px;height:80px;"></textarea>
                      </b>
                   </p>
                </div>
@@ -93,7 +93,7 @@
                <div class="row">
                   <div class="col-3">
                      <p><b> EXAMPLE</b></p>
-                     <P> <B> <input type="text" name="3p1p1_pg0" id="3p1p1_pg0"> </B></P>
+                     <P> <B> <input type="text" name="e3p1p1_pg0" id="e3p1p1_pg0"> </B></P>
                   </div>
                   <div class="col-6"></div>
                   <div class="col-3 text-right">
@@ -102,7 +102,7 @@
                         <button class="button button4">
                      <p>G</p>
                      </button>
-                     <textarea name="3p1p1_opcG" id="3p1p1_opcG"></textarea></p>
+                     <textarea name="e3p1p1_opcG" id="e3p1p1_opcG"></textarea></p>
                   </div>
                </div>
             </div>
@@ -114,27 +114,27 @@
                   <div style="margin-left: 20px">
                   
                            <div class="text-center">
-                              <h5><input type="text" name="3p1p1_pg1" id="3p1p1_pg1"></h5>
+                              <h5><input type="text" name="e3p1p1_pg1" id="e3p1p1_pg1"></h5>
                            </div>
                            <div class="text-justify">
-                              <p><b><input type="text" name="3p1p1_pg2" id="3p1p1_pg2"></b></p><br>
-                              <p><textarea name="3p1p1_pg3" id="" style="width:800px;height:130px;"></textarea></p>
+                              <p><b><input type="text" name="e3p1p1_pg2" id="e3p1p1_pg2"></b></p><br>
+                              <p><textarea name="e3p1p1_pg3" id="e3p1p1_pg3" style="width:800px;height:130px;"></textarea></p>
                            </div>
                            <div class="text-justify">
-                              <p><b><input type="text" name="3p1p1_pg4" id="3p1p1_pg4"></b></p><br>
-                              <p><textarea name="3p1p1_pg5" id="" style="width:800px;height:130px;"></textarea></p>
+                              <p><b><input type="text" name="e3p1p1_pg4" id="e3p1p1_pg4"></b></p><br>
+                              <p><textarea name="e3p1p1_pg5" id="e3p1p1_pg5" style="width:800px;height:130px;"></textarea></p>
                            </div>
                            <div class="text-justify">
-                              <p><b><input type="text" name="3p1p1_pg6" id="3p1p1_pg6"></b></p><br>
-                              <p><textarea name="3p1p1_pg7" id="" style="width:800px;height:130px;"></textarea></p>
+                              <p><b><input type="text" name="e3p1p1_pg6" id="e3p1p1_pg6"></b></p><br>
+                              <p><textarea name="e3p1p1_pg7" id="e3p1p1_pg7" style="width:800px;height:130px;"></textarea></p>
                            </div>
                            <div class="text-justify">
-                              <p><b><input type="text" name="3p1p1_pg8" id="3p1p1_pg8"></b></p><br>
-                              <p><textarea name="3p1p1_pg9" id="3p1p1_pg9" style="width:800px;height:130px;"></textarea></p>
+                              <p><b><input type="text" name="e3p1p1_pg8" id="e3p1p1_pg8"></b></p><br>
+                              <p><textarea name="e3p1p1_pg9" id="e3p1p1_pg9" style="width:800px;height:130px;"></textarea></p>
                            </div>
                            <div class="text-justify">
-                              <p><b><input type="text" name="3p1p1_pg10" id="3p1p1_pg10"></b></p><br>
-                              <p><textarea name="3p1p1_pg11" id="3p1p1_pg11" style="width:800px;height:130px;"></textarea></p>
+                              <p><b><input type="text" name="e3p1p1_pg10" id="e3p1p1_pg10"></b></p><br>
+                              <p><textarea name="e3p1p1_pg11" id="e3p1p1_pg11" style="width:800px;height:130px;"></textarea></p>
                            </div>
                            <div class="text-justify">
                               <p><b><input type="text" name="e3p1p1_pg12" id="e3p1p1_pg12"></b></p><br>
@@ -152,7 +152,7 @@
                               <p><b>A</b> </p>
                            </div>
                            <div class="col-10 text-right">
-                              <p><textarea name="3p1p1_opcA" id="3p1p1_opcA"></textarea></p>
+                              <p><textarea name="e3p1p1_opcA" id="e3p1p1_opcA"></textarea></p>
 
                            </div>
                         </div>
@@ -166,7 +166,7 @@
                               <p><b>B</b></p>
                            </div>
                            <div class="col-10 text-right">
-                              <p><textarea name="3p1p1_opcB" id="3p1p1_opcB"></textarea></p>
+                              <p><textarea name="e3p1p1_opcB" id="e3p1p1_opcB"></textarea></p>
 
                            </div>
                         </div>
@@ -180,7 +180,7 @@
                               <p><b>C</b></p>
                            </div>
                            <div class="col-10 text-right">
-                              <p><textarea name="3p1p1_opcC" id="3p1p1_opcC"></textarea></p>
+                              <p><textarea name="e3p1p1_opcC" id="e3p1p1_opcC"></textarea></p>
 
                            </div>
                         </div>
@@ -194,7 +194,7 @@
                               <p><b>D</b></p>
                            </div>
                            <div class="col-10 text-right">
-                              <p><textarea name="3p1p1_opcD" id="3p1p1_opcD"></textarea></p>
+                              <p><textarea name="e3p1p1_opcD" id="e3p1p1_opcD"></textarea></p>
 
                            </div>
                         </div>
@@ -208,7 +208,7 @@
                               <p><b>E</b></p>
                            </div>
                            <div class="col-10 text-right">
-                              <p><textarea name="3p1p1_opcE" id="3p1p1_opcE"></textarea></p>
+                              <p><textarea name="e3p1p1_opcE" id="e3p1p1_opcE"></textarea></p>
 
                            </div>
                         </div>
@@ -222,7 +222,7 @@
                               <p><b>F</b></p>
                            </div>
                            <div class="col-10 text-right">
-                              <p><textarea name="3p1p1_opcF" id="3p1p1_opcF"></textarea></p>
+                              <p><textarea name="e3p1p1_opcF" id="e3p1p1_opcF"></textarea></p>
 
                            </div>
                         </div>
@@ -331,11 +331,71 @@ $.ajax({
    Object.keys(obj).forEach(key => {
 console.log(key, obj[key]);
 switch (key) {
+case "e3p1p1_Instruccion":
+$('#e3p1p1_Instruccion').val(obj[key]);
+break;
+case "e3p1p1_pg0":
+$('#e3p1p1_pg0').val(obj[key]);
+break;
+case "e3p1p1_pg1":
+$('#e3p1p1_pg1').val(obj[key]);
+break;
+case "e3p1p1_pg2":
+$('#e3p1p1_pg2').val(obj[key]);
+break;
+case "e3p1p1_pg3":
+$('#e3p1p1_pg3').val(obj[key]);
+break;
+case "e3p1p1_pg4":
+$('#e3p1p1_pg4').val(obj[key]);
+break;
+case "e3p1p1_pg5":
+$('#e3p1p1_pg5').val(obj[key]);
+break;
+case "e3p1p1_pg6":
+$('#e3p1p1_pg6').val(obj[key]);
+break;
+case "e3p1p1_pg7":
+$('#e3p1p1_pg7').val(obj[key]);
+break;
+case "e3p1p1_pg8":
+$('#e3p1p1_pg8').val(obj[key]);
+break;
+case "e3p1p1_pg9":
+$('#e3p1p1_pg9').val(obj[key]);
+break;
+case "e3p1p1_pg10":
+$('#e3p1p1_pg10').val(obj[key]);
+break;
 case "e3p1p1_pg11":
 $('#e3p1p1_pg11').val(obj[key]);
 break;
 case "e3p1p1_pg12":
 $('#e3p1p1_pg12').val(obj[key]);
+break;
+case "e3p1p1_pg13":
+$('#e3p1p1_pg13').val(obj[key]);
+break;
+case "e3p1p1_opcG":
+$('#e3p1p1_opcG').val(obj[key]);
+break;
+case "e3p1p1_opcA":
+$('#e3p1p1_opcA').val(obj[key]);
+break;
+case "e3p1p1_opcB":
+$('#e3p1p1_opcB').val(obj[key]);
+break;
+case "e3p1p1_opcC":
+$('#e3p1p1_opcC').val(obj[key]);
+break;
+case "e3p1p1_opcD":
+$('#e3p1p1_opcD').val(obj[key]);
+break;
+case "e3p1p1_opcE":
+$('#e3p1p1_opcE').val(obj[key]);
+break;
+case "e3p1p1_opcF":
+$('#e3p1p1_opcF').val(obj[key]);
 break;
 }
 //console.log(Object.entries(obj));

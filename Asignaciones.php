@@ -222,10 +222,10 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                                     <thead class="text-center">
                                         <tr>
                                             <th>Id</th>
-                                            <th>User</th>
-                                            <th>Team</th>
-                                            <th>Profile</th>
-                                            <th>Actions</th>
+                                            <th>Usuario</th>
+                                            <th>Equipo</th>
+                                            <th>Perfil</th>
+                                            <th>Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -269,7 +269,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
 
                <div class="row">
                 <div class="col">
-                    <label for="idEquipo">Team</label>
+                    <label for="idEquipo">Equipo</label>
                         <select class="form-control" id="idEquipo">
                             <option value="0">--Selecciona una opción---</option>  
                             <option value="1">Exaver 1</option>
@@ -282,8 +282,8 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
             </div>           
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
-                <button type="submit" id="btnGuardar" class="btn btn-dark">Keep</button>
+                <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
+                <button type="submit" id="btnGuardar" class="btn btn-dark">Guardar</button>
             </div>
         </form>    
         </div>
@@ -310,7 +310,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
 
                <div class="row">
                 <div class="col">
-                    <label for="idPerfil">Profile</label>
+                    <label for="idPerfil">Perfil</label>
                         <select class="form-control" id="idPerfil">
                             <option value="0">--Selecciona una opción---</option>  
                             <option value="1">TL</option>
@@ -324,8 +324,8 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
             </div>           
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
-                <button type="submit" id="btnGuardar" class="btn btn-dark">Keep</button>
+                <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
+                <button type="submit" id="btnGuardar" class="btn btn-dark">Aceptar</button>
             </div>
         </form>    
         </div>
@@ -337,7 +337,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Register Team</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Registrar Equipo</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -355,7 +355,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
             
             <div class="row">
                 <div class="col">
-                <label for="idEquipo">Team</label>
+                <label for="idEquipo">Equipo</label>
                         <select class="form-control" id="idEquipo" name="idEquipo">
                             <option value="0">--Selecciona una opción---</option>  
                             <option value="1">Exaver 1</option>
@@ -370,8 +370,8 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                 </div>
             </div>
             <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <input type="submit" class="btn btn-primary" value="Ok">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <input type="submit" class="btn btn-primary" value="Guardar">
       </div>
         </form>
       </div>
@@ -400,7 +400,7 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                 </div>
             <div class="row">
                 <div class="col">
-                <label for="idPerfil">Profile</label>
+                <label for="idPerfil">Perfil</label>
                         <select class="form-control" id="idPerfil" name="idPerfil">
                         <option value="0">--Selecciona una opción---</option>  
                             <option value="1">TL</option>
@@ -416,8 +416,8 @@ $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
                 </div>
             </div>
             <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <input type="submit" class="btn btn-primary" value="Ok">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <input type="submit" class="btn btn-primary" value="Guardar">
       </div>
         </form>
       </div>

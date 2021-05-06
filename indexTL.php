@@ -255,7 +255,7 @@ echo ($idUsuario);
                 
                 <div class="row">
                 <div class="col">
-                <label for="idUsuario">Name User</label>
+                <label for="idUsuario">Usuario</label>
                     <select class="form-control" name="idUsuarioActualizaRevisa" id="idUsuarioActualizaRevisa">
                     <?php 
                     $conexion = mysqli_connect('localhost', 'root', '123456', 'bd_final');
@@ -291,8 +291,8 @@ echo ($idUsuario);
             </div-->           
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
-                <button type="submit" id="btnGuardar" class="btn btn-dark">Keep</button>
+                <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
+                <button type="submit" id="btnGuardar" class="btn btn-dark">Guardar</button>
             </div>
         </form>    
         </div>
