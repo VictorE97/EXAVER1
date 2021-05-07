@@ -125,7 +125,7 @@
                               <p><textarea name="e3p1p1_pg5" id="e3p1p1_pg5" style="width:800px;height:130px;"></textarea></p>
                            </div>
                            <div class="text-justify">
-                              <p><b><input type="text" name="e3p1p1_pg6" id="e3p1p1_pg6"></b></p><br>
+                              <p><b><input type="text" name="3p1p1_pg6" id="3p1p1_pg6"></b></p><br>
                               <p><textarea name="e3p1p1_pg7" id="e3p1p1_pg7" style="width:800px;height:130px;"></textarea></p>
                            </div>
                            <div class="text-justify">
@@ -138,7 +138,7 @@
                            </div>
                            <div class="text-justify">
                               <p><b><input type="text" name="e3p1p1_pg12" id="e3p1p1_pg12"></b></p><br>
-                              <p><textarea name="3p1p1_pg13" id="3p1p1_pg13" style="width:800px;height:130px;"></textarea></p>
+                              <p><textarea name="e3p1p1_pg13" id="e3p1p1_pg13" style="width:800px;height:130px;"></textarea></p>
                            </div>
                   </div>
                </div>
@@ -255,31 +255,31 @@
         .text('Click the button to serialize the object to query string');
         
         $('button').on('click', function() {
-           alert ($('#Instruccion').val());
-           alert ($('#3p1p1_opcE').val());
+           alert ($('#e3p1p1_Instruccion').val());
+           alert ($('#e3p1p1_opcE').val());
          var data = {
-            e3p1p1_Instruccion: $('#Instruccion').val(),
-            e3p1p1_pg0: $('#3p1p1_pg0').val(),
-            e3p1p1_opcG: $('#3p1p1_pgG').val(),
-            e3p1p1_pg1: $('#3p1p1_pg1').val(),
-            e3p1p1_pg2: $('#3p1p1_pg2').val(),
-            e3p1p1_pg3: $('#3p1p1_pg3').val(),
-            e3p1p1_pg4: $('#3p1p1_pg4').val(),
-            e3p1p1_pg5: $('#3p1p1_pg5').val(),
-            e3p1p1_pg6: $('#3p1p1_pg6').val(),
-            e3p1p1_pg7: $('#3p1p1_pg7').val(),
-            e3p1p1_pg8: $('#3p1p1_pg8').val(),
-            e3p1p1_pg9: $('#3p1p1_pg9').val(),
-            e3p1p1_pg10: $('#3p1p1_pg10').val(),
-            e3p1p1_pg11: $('#3p1p1_pg11').val(),
-            e3p1p1_pg12: $('#3p1p1_pg12').val(),
-            e3p1p1_pg13: $('#3p1p1_pg13').val(),
-            e3p1p1_opcA: $('#3p1p1_opcA').val(),
-            e3p1p1_opcB: $('#3p1p1_opcB').val(),
-            e3p1p1_opcC: $('#3p1p1_opcC').val(),
-            e3p1p1_opcD: $('#3p1p1_opcD').val(),
-            e3p1p1_opcE: $('#3p1p1_opcE').val(),
-            e3p1p1_opcF: $('#3p1p1_opcF').val(),
+            e3p1p1_Instruccion: $('#e3p1p1_Instruccion').val(),
+            e3p1p1_pg0: $('#e3p1p1_pg0').val(),
+            e3p1p1_opcG: $('#e3p1p1_pgG').val(),
+            e3p1p1_pg1: $('#e3p1p1_pg1').val(),
+            e3p1p1_pg2: $('#e3p1p1_pg2').val(),
+            e3p1p1_pg3: $('#e3p1p1_pg3').val(),
+            e3p1p1_pg4: $('#e3p1p1_pg4').val(),
+            e3p1p1_pg5: $('#e3p1p1_pg5').val(),
+            e3p1p1_pg6: $('#e3p1p1_pg6').val(),
+            e3p1p1_pg7: $('#e3p1p1_pg7').val(),
+            e3p1p1_pg8: $('#e3p1p1_pg8').val(),
+            e3p1p1_pg9: $('#e3p1p1_pg9').val(),
+            e3p1p1_pg10: $('#e3p1p1_pg10').val(),
+            e3p1p1_pg11: $('#e3p1p1_pg11').val(),
+            e3p1p1_pg12: $('#e3p1p1_pg12').val(),
+            e3p1p1_pg13: $('#e3p1p1_pg13').val(),
+            e3p1p1_opcA: $('#e3p1p1_opcA').val(),
+            e3p1p1_opcB: $('#e3p1p1_opcB').val(),
+            e3p1p1_opcC: $('#e3p1p1_opcC').val(),
+            e3p1p1_opcD: $('#e3p1p1_opcD').val(),
+            e3p1p1_opcE: $('#e3p1p1_opcE').val(),
+            e3p1p1_opcF: $('#e3p1p1_opcF').val(),
 
 
         };
